@@ -1,0 +1,19 @@
+#progressbox {
+	
+	border-radius: 25px;
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: white;
+    border: 1px solid #C7C7CD;
+}
+#myBar {
+	border-radius: 25px;
+    position: absolute;
+    height: 100%;
+    background-color: aqua;
+}
+#statustxt {
+	padding-top: 3px;
+	font-size: 50%;
+}

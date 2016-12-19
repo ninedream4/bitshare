@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ContentMapper">
+
+	<resultMap id="contentSelectMap" type="content">
+		<result property="contentId" column="BRD_ID" jdbcType="NUMERIC" />
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+		<result property="title" column="TLE" jdbcType="VARCHAR" />
+		<result property="fileDesc" column="DES" jdbcType="VARCHAR" />
+		<result property="category" column="CATE" jdbcType="VARCHAR" />
+		<result property="filePath" column="FILE_PATH" jdbcType="VARCHAR" />
+		<result property="fileName" column="FILE_NAME" jdbcType="VARCHAR" />
+		<result property="regDate" column="REG_DATE" jdbcType="DATE" />
+		<association property="tag" column="BRD_ID" select="getContentTagByTitle" javaType="ArrayList"/>
+	</resultMap>
+	
+	<!-- SQL : INSERT --> <!-- seq_content_brd_id.NEXTVAL -->
+	<insert id="addContent" parameterType="content" keyColumn="BRD_ID"
+		keyProperty="contentId" useGeneratedKeys="true">
+		INSERT
+		INTO BRDS( TLE , USER_ID , DES ,
+		FILE_PATH , FILE_NAME, CATE , REG_DATE)
+		VALUES (#{title:VARCHAR} , #{userId:VARCHAR} ,
+		#{fileDesc:VARCHAR} , #{filePath:VARCHAR},
+		#{fileName:VARCHAR} , #{category:VARCHAR} ,
+		SYSDATE )
+	</insert>
+
+	<insert id="addContentTag" parameterType="content">
+		INSERT ALL
+		<foreach collection="tag" item="item" separator=" ">
+			INTO BRD_TAG
+			(BRD_ID, TAG_NAME) VALUES (#{contentId}, #{item})
+		</foreach>
+		SELECT * FROM DUAL
+	</insert>
+
+	<!-- SQL : SELECT ONE keyword = title -->
+	<select id="getContent" parameterType="string" resultMap="contentSelectMap">
+		SELECT
+		BRD_ID , USER_ID , TLE , DES , FILE_PATH , FILE_NAME, CATE , REG_DATE
+		FROM BRDS
+		WHERE TLE = #{value}
+	</select>
+	
+	<select id="getContentTagByTitle" parameterType="int" resultType="string">
+		SELECT TAG_NAME
+		FROM BRD_TAG
+		WHERE BRD_ID = #{value}
+	</select>
+	
+	<select id="getContentTagByTag" parameterType="string" resultType="string">
+		SELECT BRD_ID
+		FROM BRD_TAG
+		WHERE TAG_NAME = #{value}
+	</select>
+	
+	<!-- SQL : SELECT LIST -->
+	<select  id="getContentList"  parameterType="search"	resultMap="contentSelectMap">
+	  	SELECT *
+	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
+	  					FROM		(	SELECT BRD_ID, USER_ID, TLE, DES, FILE_PATH, FILE_NAME, CATE, REG_DATE
+											FROM BRDS
+											<if test="searchCondition != null ">
+										 		<where> 
+											 		<if test="searchCondition == 0 and searchKeyword !='' ">
+											 		TLE like &apos;${searchKeyword}%&apos;
+											 		</if>
+										 		</where>
+											</if>
+											ORDER BY REG_DATE ) inner_table
+						WHERE ROWNUM &lt;= #{endRowNum} )
+		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+	 </select>
+	 
+	<!-- SQL : UPDATE -->
+	<update id="updateContent" parameterType="content">
+		UPDATE CONTENT
+		<set>
+			TLE = #{title} ,
+			DES = #{fileDesc} ,
+			FILE_PATH = #{filePath} ,
+			FILE_NAME = #{fileNanme} ,
+			CATE = #{category},
+			REG_DATE = SYSDATE
+		</set>
+		WHERE BRD_ID = #{contentId}
+	</update>
+	
+	<!-- delete -->
+	<delete id="deleteContent" parameterType="int">
+		DELETE BRDS
+		WHERE BRD_ID
+		= #{value}
+	</delete>
+	
+	<delete id="deleteContentTag" parameterType="int">
+		DELETE BRD_TAG
+		WHERE BRD_ID
+		= #{value}
+	</delete>
+
+	<!-- SQL : SELECT ROW Count -->	 
+	 <select  id="getTotalCount"  parameterType="search"	 resultType="int">
+	  	SELECT COUNT(*)
+	  	FROM( SELECT BRD_ID
+											FROM BRDS
+											<if test="searchCondition != null ">
+										 		<where> 
+											 		<if test="searchCondition == 0 and searchKeyword !='' ">
+											 		TLE like &apos;${searchKeyword}%&apos;
+											 		</if>
+										 		</where>
+											</if>
+									) countTable						
+	 </select>
+</mapper>

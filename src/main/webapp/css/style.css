@@ -1,0 +1,42 @@
+/* ī�װ� css */
+.dropbtn {
+	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  	text-transform: uppercase;
+  	font-weight: 700;
+    background-color: #000000;
+    color: white;
+    padding: 15px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2E2E2E;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #18BC9C;
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+ 	
+	<resultMap id="userSelectMap" type="user">
+		<result property="userId" 	column="USER_ID" 	jdbcType="NUMERIC"/>		
+		<result property="email"	column="EMAIL" 		jdbcType="VARCHAR"  />
+		<result property="pwd"		column="PWD"		jdbcType="VARCHAR" /> 
+		<collection property="tag" column="TAG_NAME" javaType="java.util.List" ofType="user"></collection>
+	</resultMap>
+	
+	
+	<!-- SQL : INSERT -->
+	<insert id="addUser" parameterType="user" keyColumn="USER_ID" keyProperty="userId" useGeneratedKeys="true" >
+	 	INSERT
+		INTO USERS (EMAIL, PWD)
+		VALUES	 (#{email}, #{pwd} )
+	 </insert>
+	 
+	 <insert id="addUserTag" parameterType="user" >
+	 	INSERT ALL
+	 	<foreach collection="tag" item="item" separator=" ">
+		INTO USER_TAG (USER_ID,TAG_NAME) VALUES (#{userId},#{item})
+		</foreach>
+		SELECT * FROM DUAL
+	 </insert>
+	 
+	 <!-- SQL : SELECT ONE -->
+	 <select 	id="getUser"	parameterType="user"	resultMap="userSelectMap">
+		SELECT
+		USER_ID, EMAIL, PWD
+		FROM USERS 
+		WHERE EMAIL = #{email}
+	 </select>
+	 
+	 <select 	id="getUserTag"	parameterType="int"	resultType="string">
+		SELECT
+		TAG_NAME
+		FROM USER_TAG 
+		WHERE USER_ID = #{value}
+	 </select>
+	 
+	 <!-- SQL : SELECT LIST -->
+	<select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
+	  	SELECT *
+	  	FROM (	SELECT INNER_TABLE.*, ROWNUM AS row_seq
+	  					FROM	(SELECT * FROM
+									(SELECT U.USER_ID , U.EMAIL, UT.TAG_NAME FROM USERS U, USER_TAG UT 
+										WHERE 
+										U.USER_ID = UT.USER_ID) SELECT_TABLE
+									<where>
+										<if test="searchKeyword !='' ">
+											TAG_NAME LIKE &apos;${searchKeyword}%&apos;
+											
+											OR EMAIL LIKE &apos;${searchKeyword}%&apos;
+										</if>
+									</where>
+									) INNER_TABLE
+						WHERE ROWNUM &lt;= #{endRowNum} )
+		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+	 </select>
+	 
+	 <!-- SQL : UPDATE -->
+	 <update	id="updateUser"	parameterType="user" >
+	   	UPDATE USERS
+	   	SET
+	   		EMAIL = #{email},
+			PWD	= #{pwd}
+	   	WHERE  USER_ID= #{userId}
+	 </update>
+	 
+	 <delete	id="deleteUserTag"	parameterType="int" >
+	   	DELETE FROM USER_TAG
+	   	WHERE USER_ID=#{userId}
+	 </delete>
+	
+	<!-- SQL : SELECT ROW Count -->	 
+	 <select  id="getTotalCount"  parameterType="search"	 resultType="int">
+	  	SELECT COUNT(*)
+	  	FROM (	SELECT INNER_TABLE.*, ROWNUM AS row_seq
+	  					FROM	(SELECT * FROM
+									(SELECT U.USER_ID , U.EMAIL, UT.TAG_NAME FROM USERS U, USER_TAG UT 
+										WHERE 
+										U.USER_ID = UT.USER_ID) SELECT_TABLE
+									<where>
+										<if test="searchKeyword !='' ">
+											TAG_NAME LIKE &apos;${searchKeyword}%&apos;
+											
+											OR EMAIL LIKE &apos;${searchKeyword}%&apos;
+										</if>
+									</where> ) INNER_TABLE
+								 ) COUNT_TABLE						
+	 </select>
+	 
+	 <!-- SQL : SELECT ONE -->
+	 <select 	id="checkDuplication"	parameterType="string" resultMap="userSelectMap" >
+		SELECT
+		EMAIL
+		FROM USERS
+		WHERE EMAIL = #{email}
+	 </select>
+	 
+</mapper>
