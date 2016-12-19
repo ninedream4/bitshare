@@ -14,7 +14,7 @@ import org.ghost4j.renderer.SimpleRenderer;
 
 public class ConvertFile {
 	public static void convertFileToJpg(String filePath, String fileName) throws Exception {
-		
+		System.out.println("convertFIle start======");
 		FileOutputStream fos = null;
 		System.out.println(filePath+fileName);
 		
