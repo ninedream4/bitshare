@@ -42,12 +42,10 @@ public class ContentServiceImpl implements ContentService {
 		
 		upload.uploadFile(file, content);
 		
-		new PdfToJpegConverter(content.getFilePath(), content.getFileName()).start();
-		
 		contentDao.addContent(content);
 		contentDao.addContentTag(content);
-		contentDao.getContent(content.getTitle());
 		
+		new PdfToJpegConverter(content.getFilePath(), content.getFileName()).start();
 	}
 	
 	@Override
@@ -86,6 +84,10 @@ public class ContentServiceImpl implements ContentService {
 		String filePath;
 		String fileName;
 		
+		public PdfToJpegConverter() {
+			super();
+		}
+
 		public PdfToJpegConverter(String filePath, String fileName) {
 			super();
 			this.filePath = filePath;

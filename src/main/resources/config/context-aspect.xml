@@ -21,6 +21,11 @@
 	 		<aop:around 
 					pointcut="execution(* bitcamp.java87.project01.service..*Impl.*(..) )"	method="invoke"/>
 	 	</aop:aspect>
+	 	
+	 	<aop:aspect  ref="logAspect">
+	 		<aop:around 
+					pointcut="execution(* bitcamp.java87.project01.dao..*Impl.*(..) )"	method="invoke"/>
+	 	</aop:aspect>
 	 </aop:config>
 
 </beans>
