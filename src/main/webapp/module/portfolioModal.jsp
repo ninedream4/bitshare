@@ -52,7 +52,7 @@
       <div class='comments'>
         <div class='loader'></div>
         <div class='inner'>
-          <div class='add-new' style="border-bottom:2px dashed gray">
+          <div class='add-new' style="border-bottom:2px #E5E5E5 solid">
             <label for="your-Email" style="font-size: 20px;">Email</label><br />
             <input class='input your-Email'
               placeholder='Type your Email here...' type='text'>
