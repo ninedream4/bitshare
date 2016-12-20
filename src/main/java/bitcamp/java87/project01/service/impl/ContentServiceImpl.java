@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import bitcamp.java87.project01.common.ConvertFile;
 import bitcamp.java87.project01.common.Upload;
 import bitcamp.java87.project01.dao.ContentDao;
+import bitcamp.java87.project01.domain.Comment;
 import bitcamp.java87.project01.domain.Content;
 import bitcamp.java87.project01.domain.Search;
 import bitcamp.java87.project01.service.ContentService;
@@ -35,10 +36,8 @@ public class ContentServiceImpl implements ContentService {
 		System.out.println(this.getClass());
 	}
 
-	/// Method
+	@Override
 	public void addContent(Content content, MultipartFile file) throws Exception {
-		
-		System.out.println("content : "+content);
 		
 		upload.uploadFile(file, content);
 		
@@ -46,6 +45,11 @@ public class ContentServiceImpl implements ContentService {
 		contentDao.addContentTag(content);
 		
 		new PdfToJpegConverter(content.getFilePath(), content.getFileName()).start();
+	}
+	
+	@Override
+	public void addComment(Comment comment) throws Exception {
+		contentDao.addComment(comment);
 	}
 	
 	@Override
@@ -70,14 +74,26 @@ public class ContentServiceImpl implements ContentService {
 		return map;
 	}
 	
+	@Override
 	public void deleteContent(int contentId) throws Exception {
 		contentDao.deleteContent(contentId);
 	}
 
+	@Override
+	public void deleteComment(Comment comment) throws Exception {
+		contentDao.deleteComment(comment);
+	}
+	
+	@Override
 	public void updateContent(Content content) throws Exception {
 		contentDao.updateContent(content);
 		contentDao.deleteContentTag(content.getContentId());
 		contentDao.addContentTag(content);
+	}
+	
+	@Override
+	public void updateComment(Comment comment) throws Exception {
+		contentDao.updateComment(comment);
 	}
 	
 	class PdfToJpegConverter extends Thread {
@@ -103,6 +119,4 @@ public class ContentServiceImpl implements ContentService {
 			}
 		}
 	}
-
-	
 }

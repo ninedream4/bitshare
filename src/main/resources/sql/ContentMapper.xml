@@ -18,6 +18,14 @@
 		<association property="tag" column="BRD_ID" select="getContentTagByTitle" javaType="ArrayList"/>
 	</resultMap>
 	
+	<resultMap id="commentSelectMap" type="comment">
+		<result property="commentId" column="CMT_ID" jdbcType="NUMERIC"/>
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+		<result property="contentId" column="BRD_ID" jdbcType="NUMERIC" />
+		<result property="desc" column="DES" jdbcType="VARCHAR" />
+		<result property="regDate" column="REG_DATE" jdbcType="DATE" />
+	</resultMap>
+	
 	<!-- SQL : INSERT --> <!-- seq_content_brd_id.NEXTVAL -->
 	<insert id="addContent" parameterType="content" keyColumn="BRD_ID"
 		keyProperty="contentId" useGeneratedKeys="true">
@@ -38,7 +46,13 @@
 		</foreach>
 		SELECT * FROM DUAL
 	</insert>
-
+	
+	<insert id="addComment" parameterType="comment">
+		INSERT
+		INTO CMTS( USER_ID, BRD_ID, DES, REG_DATE )
+		VALUES ( #{userId}, #{contentId}, #{desc}, SYSDATE )
+	</insert>
+	
 	<!-- SQL : SELECT ONE keyword = title -->
 	<select id="getContent" parameterType="string" resultMap="contentSelectMap">
 		SELECT
@@ -91,19 +105,35 @@
 		WHERE BRD_ID = #{contentId}
 	</update>
 	
+	<update id="updateComment" parameterType="comment">
+		UPDATE CMTS
+		<set>
+			DES = #{desc}
+		</set>
+		WHERE USER_ID = #{userId}
+		AND BRD_ID = #{contentId}
+	</update>
+	
 	<!-- delete -->
-	<delete id="deleteContent" parameterType="int">
+	<delete id="deleteContent" parameterType="comment">
 		DELETE BRDS
-		WHERE BRD_ID
-		= #{value}
+		WHERE USER_ID = #{userId}
+		AND BRD_ID = #{contentId}
 	</delete>
 	
 	<delete id="deleteContentTag" parameterType="int">
 		DELETE BRD_TAG
-		WHERE BRD_ID
-		= #{value}
+		WHERE 
+		BRD_ID = #{value}
 	</delete>
 
+	<delete id="deleteComment" parameterType="comment
+	">
+		DELETE BRD_TAG
+		WHERE 
+		BRD_ID = #{value}
+	</delete>
+	
 	<!-- SQL : SELECT ROW Count -->	 
 	 <select  id="getTotalCount"  parameterType="search"	 resultType="int">
 	  	SELECT COUNT(*)

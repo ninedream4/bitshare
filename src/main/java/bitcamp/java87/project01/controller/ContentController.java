@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import bitcamp.java87.project01.domain.Comment;
 import bitcamp.java87.project01.domain.Content;
 import bitcamp.java87.project01.domain.Page;
 import bitcamp.java87.project01.domain.Search;
@@ -51,6 +52,22 @@ public class ContentController {
 		User user = (User)session.getAttribute("user");
 		content.setUserId(user.getUserId());
 		contentService.addContent(content, file);
+		
+		return "redirect:/index.jsp";
+	}
+	
+	@RequestMapping(value = "addComment", method = RequestMethod.POST)
+	public String addComment(@ModelAttribute("comment") Comment comment, HttpSession session, @RequestParam("file") MultipartFile file) throws Exception {
+		
+		System.out.println("/content/addContent : POST");
+		// Business Logic
+		User user = (User)session.getAttribute("user");
+		comment.setUserId(user.getUserId());
+		
+		Content content = (Content)session.getAttribute("content");
+		comment.setContentId(content.getContentId());
+		
+		contentService.addComment(comment);
 		
 		return "redirect:/index.jsp";
 	}
@@ -96,7 +113,7 @@ public class ContentController {
 //	}
 
 	@RequestMapping(value = "updateContent", method = RequestMethod.POST)
-	public String updateContent(@ModelAttribute() Content content, Model model) throws Exception {
+	public String updateContent(@ModelAttribute("content") Content content, Model model) throws Exception {
 
 		System.out.println("/content/updateContent : POST");
 		System.out.println(content);
@@ -111,30 +128,17 @@ public class ContentController {
 		return "forward:/index.jsp";
 	}
 	
-	@RequestMapping( value="contentList",method = RequestMethod.POST)
-	public String listUser( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) throws Exception{
+	@RequestMapping(value = "updateComment", method = RequestMethod.POST)
+	public String updateComment(@ModelAttribute("comment") Comment comment, Model model, HttpSession session) throws Exception {
+		User user = (User)session.getAttribute("user");
+		comment.setUserId(user.getUserId());
 		
-		System.out.println("/content/contentList : POST");
-		System.out.println(search.getSearchKeyword());
-		if(search.getCurrentPage() ==0 ){
-			search.setCurrentPage(1);
-		}
-		search.setPageSize(pageSize);
-		
-//		// Business logic ����
-//		Map<String , Object> map=contentService.getContentList(search);
-//		
-//		System.out.println(" map : "+map);
-//		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-//		System.out.println(resultPage);
-//		
-//		// Model �� View ����
-//		model.addAttribute("list", map.get("list"));
-//		model.addAttribute("resultPage", resultPage);
-//		model.addAttribute("search", search);
-//		
-//		System.out.println("contentlist 완료");
-		return "forward:/search.jsp";
+		Content content = (Content)session.getAttribute("content");
+		comment.setContentId(content.getContentId());
+		contentService.updateComment(comment);
+
+		return "forward:/index.jsp";
 	}
+	
 
 }
