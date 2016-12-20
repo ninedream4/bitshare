@@ -61,7 +61,7 @@ $(function() {
     $('<a href="./users/' + guestuserId + '/" target="_blank">' + guestuserEmail + '</a>').appendTo(contents);
     $('<span> • Right now</span><br /><br />').appendTo(contents);
     $('<p>' + msg + '</p>').appendTo(contents);
-    
+    $('<hr style="border:gray solid 1px"></hr>').appendTo(contents);
     contents.appendTo(comment);
     $('.add-new').after(comment);
     comment.fadeIn('slow');

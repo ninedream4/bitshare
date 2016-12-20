@@ -127,8 +127,7 @@
 		BRD_ID = #{value}
 	</delete>
 
-	<delete id="deleteComment" parameterType="comment
-	">
+	<delete id="deleteComment" parameterType="comment">
 		DELETE BRD_TAG
 		WHERE 
 		BRD_ID = #{value}
