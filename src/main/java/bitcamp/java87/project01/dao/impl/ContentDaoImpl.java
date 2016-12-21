@@ -91,4 +91,12 @@ public class ContentDaoImpl implements ContentDao {
 		return sqlSession.selectOne("ContentMapper.getTotalCount", search);
 	}
 
+  @Override
+  public boolean checkTitle(String title) throws Exception {
+   if(sqlSession.selectOne("ContentMapper.checkTitle", title)==null){
+     return true;
+   }
+    return false;
+  }
+
 }

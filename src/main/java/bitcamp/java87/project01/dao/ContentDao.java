@@ -31,5 +31,7 @@ public interface ContentDao {
 	public void deleteComment(Comment comment) throws Exception;
 	
 	public int getTotalCount(Search search) throws Exception;
+	
+	public boolean checkTitle(String title)throws Exception;
 
 }

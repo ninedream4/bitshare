@@ -147,4 +147,11 @@
 											</if>
 									) countTable						
 	 </select>
+	 
+	 <select id="checkTitle" parameterType="string"  resultMap="contentSelectMap">
+	     SELECT 
+	     TLE FROM BRDS
+	     WHERE TLE = #{title}
+	 </select>
+	 
 </mapper>

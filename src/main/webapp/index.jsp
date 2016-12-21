@@ -99,6 +99,8 @@
 <script type="text/javascript" src="js/userValidationCheck.js"></script>
 <script type="text/javascript" src="js/jquery.form.min.js"></script>
 <script type="text/javascript" src="js/fileUpload.js"></script>
+<script type="text/javascript" src="js/logInCheck.js"></script>
+<script type="text/javascript" src="js/checkTitle.js"></script>
 <!-- Slider JavaScript -->
 <script src="js/jquery.cycle2.js"></script>
 <!-- Comment JavaScript -->
