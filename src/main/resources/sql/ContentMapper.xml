@@ -99,7 +99,7 @@
 			DES = #{fileDesc} ,
 			FILE_PATH = #{filePath} ,
 			FILE_NAME = #{fileNanme} ,
-			CATE = #{category},
+			CATE = #{category} ,
 			REG_DATE = SYSDATE
 		</set>
 		WHERE BRD_ID = #{contentId}
@@ -127,8 +127,7 @@
 		BRD_ID = #{value}
 	</delete>
 
-	<delete id="deleteComment" parameterType="comment
-	">
+	<delete id="deleteComment" parameterType="comment">
 		DELETE BRD_TAG
 		WHERE 
 		BRD_ID = #{value}

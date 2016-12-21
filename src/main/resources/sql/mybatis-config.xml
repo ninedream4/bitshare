@@ -17,7 +17,8 @@
 		<typeAlias alias="user" type="bitcamp.java87.project01.domain.User" />	
 		<typeAlias alias="search" type="bitcamp.java87.project01.domain.Search" />
 		<typeAlias alias="content" type="bitcamp.java87.project01.domain.Content"/>
-		</typeAliases>
+		<typeAlias alias="comment" type="bitcamp.java87.project01.domain.Comment"/>
+	</typeAliases>
 	
 	 <!-- SQL Definition :: file include -->
 	<mappers>

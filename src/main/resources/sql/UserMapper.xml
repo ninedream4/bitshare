@@ -13,7 +13,6 @@
 		<collection property="tag" column="TAG_NAME" javaType="java.util.List" ofType="user"></collection>
 	</resultMap>
 	
-	
 	<!-- SQL : INSERT -->
 	<insert id="addUser" parameterType="user" keyColumn="USER_ID" keyProperty="userId" useGeneratedKeys="true" >
 	 	INSERT
