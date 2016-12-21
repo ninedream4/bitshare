@@ -1,5 +1,3 @@
-@import "bourbon";
-
 @mixin animation($content) {
   -webkit-animation: $content;
   -moz-animation:    $content;
