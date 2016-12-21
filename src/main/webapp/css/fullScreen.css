@@ -1,0 +1,11 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+*:fullscreen
+*:-ms-fullscreen,
+*:-webkit-full-screen,
+*:-moz-full-screen {
+   overflow: auto !important;
+}

@@ -17,35 +17,25 @@
         <h2>Title</h2>
         <hr class="star-primary">
       </div>
-      <div class="modal-body1" vertical-align="middle">
-        <div style="display: inline-block; width: 10%;">
-          <!--  
-          <button type="button" href="#" id="prev" class="btn btn-default" >Prev</button>-->
-        </div>
+      <div class="modal-body"  align="center">
+
+         <div id="slideimg">
         <div class="cycle-slideshow" data-cycle-fx="scrollHorz"
-          data-cycle-timeout="0" data-cycle-prev="#prev"
-          data-cycle-next="#next"
-          style="width: 79%; height: auto; display: inline-block;">
-          <img src="img/portfolio/cabin.png"
-            style="width: auto; height: auto;" class="img-responsive" /> <img
-            src="img/portfolio/cake.png" style="width: auto; height: auto;"
-            class="img-responsive" /> <img src="img/portfolio/circus.png"
-            style="width: auto; height: auto;" class="img-responsive" /> <img
-            src="img/portfolio/game.png" style="width: auto; height: auto;"
-            class="img-responsive" /> <img src="img/portfolio/safe.png"
-            style="width: auto9; height: auto;" class="img-responsive" /> <img
-            src="img/portfolio/submarine.png"
-            style="width: auto; height: auto;" class="img-responsive" />
+          data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next"
+          style="width: 100%; height: auto; display: inline-block;">
+          <img src="img/portfolio/cabin.png" style="width: auto; height: auto;" class="img-responsive" />
+          <img src="img/portfolio/cake.png" style="width: auto; height: auto;" class="img-responsive" />
+          <img src="img/portfolio/circus.png" style="width: auto; height: auto;" class="img-responsive" />
+          <img src="img/portfolio/game.png" style="width: auto; height: auto;" class="img-responsive" />
+          <img src="img/portfolio/safe.png" style="width: auto9; height: auto;" class="img-responsive" />
+          <img src="img/portfolio/submarine.png" style="width: auto; height: auto;" class="img-responsive" />
         </div>
-        <div style="width: 10%; display: inline-block;">
-          <!--  <button type="button" href=# id="next" class="btn btn-default"
-              align="right">Next</button> -->
-        </div>
+     
         <div class=center align="center">
           <button type="button" href="#" id="prev" class="btn btn-default">Prev</button>
-          <button type="button" href=# id="next" class="btn btn-default"
-            align="right">Next</button>
+          <button type="button" href=# id="next" class="btn btn-default" align="right">Next</button>
         </div>
+      </div>
       </div>
       <div class="class" align="center" style="clear: both;"></div>
       <div style="overflow:auto; height:350px; width:auto;">
@@ -65,6 +55,7 @@
       </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="toggleFullScreen(document.getElementById('slideimg'))">fullScreen</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

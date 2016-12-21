@@ -36,6 +36,9 @@
 
 <!-- Comment CSS -->
 <link href="css/comment.css" rel="stylesheet" type="text/css">
+<!--  fullScreen CSS-->
+<link href="css/fullScreen.css" rel="stylesheet" type="text/css">
+
 
 
 </head>
@@ -95,11 +98,13 @@
 <script type="text/javascript" src="js/userValidationCheck.js"></script>
 <script type="text/javascript" src="js/jquery.form.min.js"></script>
 <script type="text/javascript" src="js/fileUpload.js"></script>
-   <!-- Slider JavaScript -->
-  <script src="js/jquery.cycle2.js"></script>
+<!-- Slider JavaScript -->
+<script src="js/jquery.cycle2.js"></script>
+<!-- Comment JavaScript -->
+<script src="js/comment.js"></script>
+<!-- fullScreen -->  
+<script src="js/fullScreen.js"></script>
   
-     <!-- Comment JavaScript -->
-  <script src="js/comment.js"></script>
   
 </body>
 </html>
