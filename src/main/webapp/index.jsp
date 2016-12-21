@@ -39,7 +39,8 @@
 <!--  fullScreen CSS-->
 <link href="css/fullScreen.css" rel="stylesheet" type="text/css">
 
-
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 
 </head>
 
@@ -105,6 +106,8 @@
 <!-- fullScreen -->  
 <script src="js/fullScreen.js"></script>
   
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
   
 </body>
 </html>

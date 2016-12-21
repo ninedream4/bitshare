@@ -50,6 +50,16 @@
 							</div>
 							<br />
 							<div class="form-group" style="width:70%; margin: auto;">
+								<label for="dropdown" style="font-size: 20px;">Category</label></br>
+								<select class="selectpicker" title="Choose Category" id="category" name="category">
+								  <option>JAVA</option>
+								  <option>C/C++</option>
+								  <option>WINDOWS</option>
+								  <option>etc</option>
+								</select>
+							</div>
+							<br />
+							<div class="form-group" style="width:70%; margin: auto;">
 								<div style="text-align: left">
 									<label for="inputTitle" style="font-size: 20px;">Tags</label> <input
 										type="text" class="form-control" id="inputTitle"

@@ -22,9 +22,6 @@ $(function() {
   ?>
   */
   var allComments = [
-    {userid: '1', Email: 'Tester 1', avatar: 'default', before: '5 minutes before', message: 'That is cool!'},
-    {userid: '2', Email: 'Chuck Norris', avatar: 'default', before: '15 minutes before', message: 'I can totally say, that is not good as me, but whatever.'},
-    {userid: '3', Email: 'Demo', avatar: 'default', before: '30 minutes before', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin condimentum non justo ut accumsan. Pellentesque hendrerit vitae urna at faucibus.'}
   ];
   var loaded = 0;
   

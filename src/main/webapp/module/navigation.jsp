@@ -21,13 +21,13 @@
 					<li class="hidden"><a href="#page-top"></a></li>
 					
 					<c:if test="${empty user.email}">
-					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#category">category</a></li>
+					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#categoryView">category</a></li>
 					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#login">login</a></li>
 					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#signup">signup</a></li>
 					</c:if>
 					<c:if test="${!empty user.email}">
 					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#mypage" id="email1"></a></li>
-					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#category">category</a></li>
+					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#categoryView">category</a></li>
 					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#upload">upload</a></li>
 					<li><a data-toggle="modal" style="cursor:pointer;" data-target="#logout">logout</a></li>
 					</c:if>
