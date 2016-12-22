@@ -26,5 +26,6 @@ public interface ContentService {
 	
 	public void updateComment(Comment comment) throws Exception;
 	
+	public boolean checkTitle(String title) throws Exception;
 	
 }

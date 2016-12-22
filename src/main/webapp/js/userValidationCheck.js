@@ -12,14 +12,17 @@ $(document).ready(
 						var re = /([A-Z0-9a-z_-][^@])+?@[^$#<>?]+?\.[\w]{2,4}/	.test(this.value);
 						var param = $("#email").val();
 											
-						$.post('/user/checkDuplication', {
-							"email" : param
-						}, function(data) {							
-							if (data == false || !re ) {
+						$.post('/user/checkDuplication', {"email" : param	}, function(data) {							
+							if (data == false ){								
+								$('#succsessEmail').hide();	
+								$('#errorEmail').hide();
+								$('#differentEmail').show();
+							}if( !re ) {
 								$('#succsessEmail').hide();	
 								$('#errorEmail').show();
-							} else {
+							}if(data==true){
 								$('#errorEmail').hide();
+								$('#differentEmail').hide();
 								$('#succsessEmail').show();						
 							}
 						}), 
