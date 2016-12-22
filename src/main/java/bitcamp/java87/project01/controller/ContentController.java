@@ -1,9 +1,9 @@
 package bitcamp.java87.project01.controller;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.Map;
-
-
-import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import bitcamp.java87.project01.domain.Comment;
@@ -140,5 +141,17 @@ public class ContentController {
 		return "forward:/index.jsp";
 	}
 	
-
+	@RequestMapping(value = "download")
+	@ResponseBody
+	public void download(OutputStream out) throws Exception {
+		BufferedInputStream fileIn = new BufferedInputStream(new FileInputStream("c:/bitshare/aaa/1.png"));
+		
+		int b = 0;
+		while ((b = fileIn.read()) != -1) {
+			out.write(b);
+		}
+		
+		fileIn.close();
+		out.flush();
+	}
 }

@@ -12,9 +12,10 @@ import org.apache.commons.io.IOUtils;
 import org.ghost4j.document.PDFDocument;
 import org.ghost4j.renderer.SimpleRenderer;
 
+import bitcamp.java87.project01.domain.Content;
+
 public class ConvertFile {
-	public static void convertFileToJpg(String filePath, String fileName) throws Exception {
-		System.out.println("convertFIle start======");
+	public static void convertFileToJpg(Content content, String filePath, String fileName) throws Exception {
 		FileOutputStream fos = null;
 		System.out.println(filePath+fileName);
 		
@@ -28,6 +29,7 @@ public class ConvertFile {
 		    renderer.setResolution(150);
 		    
 		    List<Image> images = renderer.render(document);
+		    content.setFileLength(images.size());
 		    
 		    for (int i = 0; i < images.size(); i++) {
                 ImageIO.write((RenderedImage) images.get(i), "png", new File(filePath + (i + 1) + ".png"));

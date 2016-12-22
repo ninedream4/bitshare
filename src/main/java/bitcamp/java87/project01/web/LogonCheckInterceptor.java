@@ -42,7 +42,7 @@ public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 			
 			if(		uri.indexOf("addUser") != -1 ||	uri.indexOf("login") != -1 		|| 
-					uri.indexOf("checkDuplication") != -1 ){
+					uri.indexOf("checkDuplication") != -1 || uri.indexOf("getAll") != -1){
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 				System.out.println("[ .... ]");
 				System.out.println("[ LogonCheckInterceptor end........]\n");

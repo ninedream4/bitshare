@@ -23,7 +23,9 @@ public interface ContentDao {
 	public void updateContent(Content content) throws Exception;
 	
 	public void updateComment(Comment comment) throws Exception;
-
+	
+	public void updateContentLength(int fileLength) throws Exception;
+	
 	public void deleteContent(int contentId) throws Exception;
 
 	public void deleteContentTag(int contentId) throws Exception;

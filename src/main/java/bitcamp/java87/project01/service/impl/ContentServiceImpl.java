@@ -41,10 +41,12 @@ public class ContentServiceImpl implements ContentService {
 		
 		upload.uploadFile(file, content);
 		
+
 		contentDao.addContent(content);
 		contentDao.addContentTag(content);
 		
-		new PdfToJpegConverter(content.getFilePath(), content.getFileName()).start();
+		new PdfToJpegConverter(content, content.getFilePath(), content.getFileName()).start();
+
 	}
 	
 	@Override
@@ -99,21 +101,36 @@ public class ContentServiceImpl implements ContentService {
 	class PdfToJpegConverter extends Thread {
 		String filePath;
 		String fileName;
+		Content content;
+		
+		@Qualifier("contentDaoImpl")
+		private ContentDao contentDao;
+		
+		
+		public void setContentDao(ContentDao contentDao) {
+			this.contentDao = contentDao;
+		}
 		
 		public PdfToJpegConverter() {
 			super();
 		}
 
-		public PdfToJpegConverter(String filePath, String fileName) {
+		public PdfToJpegConverter(Content content, String filePath, String fileName) {
 			super();
 			this.filePath = filePath;
 			this.fileName = fileName;
+			this.content = content;
 		}
 
 		@Override
 		public void run() {
 			try {
-				ConvertFile.convertFileToJpg(filePath, fileName);
+				synchronized (ContentServiceImpl.this.contentDao) {
+					ConvertFile.convertFileToJpg(content, filePath, fileName);
+				}
+				
+				contentDao.updateContentLength(content.getFileLength());
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

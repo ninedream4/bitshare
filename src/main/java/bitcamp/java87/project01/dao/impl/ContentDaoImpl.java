@@ -67,6 +67,11 @@ public class ContentDaoImpl implements ContentDao {
 	}
 	
 	@Override
+	public void updateContentLength(int fileLength) throws Exception {
+		sqlSession.update("ContentMapper.updateContentFileLength", fileLength);
+	}
+	
+	@Override
 	public void updateComment(Comment comment) throws Exception {
 		sqlSession.update("ContentMapper.updateComment", comment);
 	}

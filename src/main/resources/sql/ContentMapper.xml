@@ -14,6 +14,7 @@
 		<result property="category" column="CATE" jdbcType="VARCHAR" />
 		<result property="filePath" column="FILE_PATH" jdbcType="VARCHAR" />
 		<result property="fileName" column="FILE_NAME" jdbcType="VARCHAR" />
+		<result property="fileLength" column="FILE_LENGTH" jdbcType="NUMERIC" />
 		<result property="regDate" column="REG_DATE" jdbcType="DATE" />
 		<association property="tag" column="BRD_ID" select="getContentTagByTitle" javaType="ArrayList"/>
 	</resultMap>
@@ -31,11 +32,11 @@
 		keyProperty="contentId" useGeneratedKeys="true">
 		INSERT
 		INTO BRDS( TLE , USER_ID , DES ,
-		FILE_PATH , FILE_NAME, CATE , REG_DATE)
+		FILE_PATH , FILE_NAME, FILE_LENGTH, CATE , REG_DATE)
 		VALUES (#{title:VARCHAR} , #{userId:VARCHAR} ,
 		#{fileDesc:VARCHAR} , #{filePath:VARCHAR},
-		#{fileName:VARCHAR} , #{category:VARCHAR} ,
-		SYSDATE )
+		#{fileName:VARCHAR} , #{fileLength:NUMERIC},
+		#{category:VARCHAR} , SYSDATE )
 	</insert>
 
 	<insert id="addContentTag" parameterType="content">
@@ -56,7 +57,7 @@
 	<!-- SQL : SELECT ONE keyword = title -->
 	<select id="getContent" parameterType="string" resultMap="contentSelectMap">
 		SELECT
-		BRD_ID , USER_ID , TLE , DES , FILE_PATH , FILE_NAME, CATE , REG_DATE
+		BRD_ID , USER_ID , TLE , DES , FILE_PATH , FILE_NAME, FILE_LENGTH, CATE, REG_DATE
 		FROM BRDS
 		WHERE TLE = #{value}
 	</select>
@@ -77,7 +78,7 @@
 	<select  id="getContentList"  parameterType="search"	resultMap="contentSelectMap">
 	  	SELECT *
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	SELECT BRD_ID, USER_ID, TLE, DES, FILE_PATH, FILE_NAME, CATE, REG_DATE
+	  					FROM		(	SELECT BRD_ID, USER_ID, TLE, DES, FILE_PATH, FILE_NAME, FILE_LENGTH, CATE, REG_DATE
 											FROM BRDS
 											<if test="searchCondition != null ">
 										 		<where> 
@@ -98,9 +99,19 @@
 			TLE = #{title} ,
 			DES = #{fileDesc} ,
 			FILE_PATH = #{filePath} ,
-			FILE_NAME = #{fileNanme} ,
+			FILE_NAME = #{fileName} ,
+			FILE_LENGTH = #{fileLength},
 			CATE = #{category} ,
 			REG_DATE = SYSDATE
+		</set>
+		WHERE BRD_ID = #{contentId}
+	</update>
+	
+	<!-- SQL : UPDATE -->
+	<update id="updateContentFileLength" parameterType="int">
+		UPDATE CONTENT
+		<set>
+			FILE_LENGTH = #{fileLength}
 		</set>
 		WHERE BRD_ID = #{contentId}
 	</update>

@@ -1,5 +1,8 @@
 package bitcamp.java87.project01.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +14,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.JsonObject;
 
 import bitcamp.java87.project01.domain.Page;
 import bitcamp.java87.project01.domain.Search;
@@ -80,6 +86,16 @@ public class UserController {
 		
 		return "redirect:/common/error.jsp";
 	
+	}
+	
+	@RequestMapping(value="getAll", method=RequestMethod.POST)
+	public List<User> getAll() throws Exception {
+		// Business Logic
+		List<User> list = new ArrayList<User>();
+		list.add(userService.getUser("a@naver.com", "a"));
+		list.add(userService.getUser("qwer@naver.com", "qwer"));
+		
+		return list;
 	}
 
 	@RequestMapping(value="logout", method=RequestMethod.POST)

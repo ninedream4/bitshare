@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <div w3-include-html="content.html"></div>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="slide modal" id="modalView" tabindex="-1" role="dialog"
   aria-hidden="true">
@@ -23,17 +24,16 @@
         <div class="cycle-slideshow" data-cycle-fx="scrollHorz"
           data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next"
           style="width: 100%; height: auto; display: inline-block;">
-          <img src="img/portfolio/cabin.png" style="width: auto; height: auto;" class="img-responsive" />
-          <img src="img/portfolio/cake.png" style="width: auto; height: auto;" class="img-responsive" />
-          <img src="img/portfolio/circus.png" style="width: auto; height: auto;" class="img-responsive" />
-          <img src="img/portfolio/game.png" style="width: auto; height: auto;" class="img-responsive" />
-          <img src="img/portfolio/safe.png" style="width: auto9; height: auto;" class="img-responsive" />
-          <img src="img/portfolio/submarine.png" style="width: auto; height: auto;" class="img-responsive" />
+          <c:forEach var="i" begin="1" end="5" step="1">
+          	<img src="file:\\C:\bitshare\aaa\1.png" style="width: auto; height: auto;" class="img-responsive" />
+          </c:forEach>
+          
         </div>
      
-        <div class=center align="center">
+        <div class=center align="center" style="margin:5px">
           <button type="button" href="#" id="prev" class="btn btn-default">Prev</button>
-          <button type="button" href=# id="next" class="btn btn-default" align="right">Next</button>
+          <button type="button" href=# id="next" class="btn btn-default">Next</button>
+          <button type="button" class="btn btn-default" style=" position:absolute; right:5%" onclick="toggleFullScreen(document.getElementById('slideimg'))">fullScreen</button>
         </div>
       </div>
       </div>
@@ -42,20 +42,30 @@
       <div class='comments'>
         <div class='loader'></div>
         <div class='inner'>
-          <div class='add-new' style="border-bottom:2px #E5E5E5 solid">
-            <label for="your-Email" style="font-size: 20px;">Email</label><br />
-            <input class='input your-Email'	
-              placeholder='Type your Email here...' type='text'>
-            <br />
-            <textarea class='input your-msg'
-              placeholder='Type your message here...' type='text' style="width:80%"></textarea>
-            <button class='send-msg'>Send message</button> <br/><br>
-          </div>
+        <c:if test="${empty user.email}">
+        	<div class='add-new' style="border-bottom:2px #ccc7c7 solid">
+	            <label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label><br />
+	            <h3>guest : please login!</h3>
+	          </div>
+        </c:if>
+        <c:if test="${!empty user.email}">
+	          <div class='add-new' style="border-bottom:2px #ccc7c7 solid">
+	            <label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label><br />
+	            <h3>${user.email}</h3>
+	            <input class='input your-Email' value=${user.email} type='hidden'>
+	            <textarea class='form-control your-msg'
+	              placeholder='Type your message here' type='text' rows="3"></textarea>
+	            <button class='send-msg btn btn-primary btn-sm' style="margin:5px; float:right;">submit</button> <br/><br>
+	          </div>
+          </c:if>
+          	<div>
+          		<h3>${comment.userId}</h3>
+          		<h3>${comment.desc}</h3>
+          	</div>
         </div>
       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" onclick="toggleFullScreen(document.getElementById('slideimg'))">fullScreen</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -63,23 +73,3 @@
 </div>
 
 
-
-<!-- 
-<div class="portfolio-modal modal fade" id="modalView" tabindex="-1"
-  role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"></div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div id="modalBody"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
- -->

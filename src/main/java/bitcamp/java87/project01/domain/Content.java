@@ -11,6 +11,7 @@ public class Content {
 	private String fileDesc;
 	private String filePath;
 	private String fileName;
+	private int fileLength;
 	private String category;
 	private Date regDate;
 	private List<String> tag;
@@ -64,6 +65,14 @@ public class Content {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public int getFileLength() {
+		return fileLength;
+	}
+
+	public void setFileLength(int fileLength) {
+		this.fileLength = fileLength;
 	}
 
 	public String getCategory() {
