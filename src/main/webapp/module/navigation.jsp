@@ -68,7 +68,6 @@ $(function(){
 	var email="${user.email}";
 	var resultEmail=email.split('@');
 	
-	console.log(resultEmail);
 	$("#email1").text("Welcome "+resultEmail[0]);
 });
 </script>

@@ -94,7 +94,7 @@
 	 
 	<!-- SQL : UPDATE -->
 	<update id="updateContent" parameterType="content">
-		UPDATE CONTENT
+		UPDATE BRDS
 		<set>
 			TLE = #{title} ,
 			DES = #{fileDesc} ,
@@ -109,7 +109,7 @@
 	
 	<!-- SQL : UPDATE -->
 	<update id="updateContentFileLength" parameterType="int">
-		UPDATE CONTENT
+		UPDATE BRDS
 		<set>
 			FILE_LENGTH = #{fileLength}
 		</set>

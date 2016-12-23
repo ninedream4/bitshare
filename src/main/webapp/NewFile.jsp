@@ -17,15 +17,12 @@ $.ajax({
 	data:{},
 	success:function(data) {
         if (data != null) {
-        	$('#body').append('<script src=\'/js/slide.js\'><\/script>');
         	
         } else {
             alert("불러오기 실패");
         }
     }   
 });
-
-
 </script>
 
 <div id="body"></div>
