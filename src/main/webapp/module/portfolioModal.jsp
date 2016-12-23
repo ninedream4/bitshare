@@ -24,8 +24,8 @@
         <div class="cycle-slideshow" data-cycle-fx="scrollHorz"
           data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next"
           style="width: 100%; height: auto; display: inline-block;">
-          <c:forEach var="i" begin="1" end="5" step="1">
-          	<img src="file:\\C:\bitshare\aaa\1.png" style="width: auto; height: auto;" class="img-responsive" />
+          <c:forEach var="i" begin="1" end="5" step="1" varStatus="status">
+          	<img src="/content/download?src=aaa/${status.count}.png" style="width: auto; height: auto;" class="img-responsive" />
           </c:forEach>
           
         </div>

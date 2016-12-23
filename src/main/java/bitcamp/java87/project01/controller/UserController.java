@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 
 import bitcamp.java87.project01.domain.Page;
@@ -88,14 +89,20 @@ public class UserController {
 	
 	}
 	
-	@RequestMapping(value="getAll", method=RequestMethod.POST)
-	public List<User> getAll() throws Exception {
+	@RequestMapping(value="getAll", method=RequestMethod.POST, produces="application/json")
+	public @ResponseBody String getAll() throws Exception {
+		System.out.println("getAll");
 		// Business Logic
+		System.out.println("=1=");
 		List<User> list = new ArrayList<User>();
+		System.out.println("=22=");
 		list.add(userService.getUser("a@naver.com", "a"));
-		list.add(userService.getUser("qwer@naver.com", "qwer"));
 		
-		return list;
+		System.out.println("=2=");
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonText = mapper.writeValueAsString(list);
+		System.out.println("=3="+jsonText);
+		return jsonText;
 	}
 
 	@RequestMapping(value="logout", method=RequestMethod.POST)

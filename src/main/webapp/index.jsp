@@ -64,7 +64,9 @@
 	<jsp:include page="module/navigation.jsp"/>
 	<!-- Header -->
 	<jsp:include page="module/header.jsp"/>
-		
+	
+	<div id="mainContent"></div>
+	
 	<!-- Portfolio Grid Section -->
 	<jsp:include page="module/portfolioSection.jsp"/>
 	<!-- About Section -->
@@ -104,13 +106,11 @@
 <script type="text/javascript" src="js/checkTitle.js"></script>
 <!-- Slider JavaScript -->
 <script src="js/jquery.cycle2.js"></script>
-<!-- Comment JavaScript -->
-<script src="js/comment.js"></script>
 <!-- fullScreen -->  
 <script src="js/fullScreen.js"></script>
   
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-  
+
 </body>
 </html>

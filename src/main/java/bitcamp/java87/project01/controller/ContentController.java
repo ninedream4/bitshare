@@ -135,8 +135,12 @@ public class ContentController {
 	
 	@RequestMapping(value = "download")
 	@ResponseBody
-	public void download(OutputStream out) throws Exception {
-		BufferedInputStream fileIn = new BufferedInputStream(new FileInputStream("c:/bitshare/aaa/1.png"));
+	public void download(OutputStream out, @RequestParam("src") String src) throws Exception {
+		String path = "c:/bitshare/";
+		path+= src;
+		BufferedInputStream fileIn = new BufferedInputStream(new FileInputStream(path));
+		System.out.println("=============");
+		System.out.println(src);
 		
 		int b = 0;
 		while ((b = fileIn.read()) != -1) {
@@ -145,5 +149,6 @@ public class ContentController {
 		
 		fileIn.close();
 		out.flush();
+		out.close();
 	}
 }
