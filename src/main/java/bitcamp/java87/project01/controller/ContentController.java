@@ -104,6 +104,32 @@ public class ContentController {
 		model.addAttribute("search", search);
 	}
 	
+	@RequestMapping( value="contentList",method = RequestMethod.POST)
+	public String listUser( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) throws Exception{
+		
+		System.out.println("/content/contentList : POST");
+		System.out.println("search 키워드 : "+search.getSearchKeyword());
+//		if(search.getCurrentPage() ==0 ){
+//			search.setCurrentPage(1);
+//		}
+//		search.setPageSize(pageSize);
+//		System.out.println("pageSize : "+pageSize);
+//		// Business logic ����
+		Map<String , Object> map=contentService.getContentList(search);
+//		
+//		System.out.println(" map : "+map);
+//		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+//		System.out.println(resultPage);
+//		
+//		// Model �� View ����
+//		model.addAttribute("list", map.get("list"));
+//		model.addAttribute("resultPage", resultPage);
+//		model.addAttribute("search", search);
+		
+		System.out.println("contentlist 완료");
+		return "redirect:/search.jsp";
+	}
+	
 
 	@RequestMapping(value = "updateContent", method = RequestMethod.POST)
 	public String updateContent(@ModelAttribute("content") Content content, Model model) throws Exception {
