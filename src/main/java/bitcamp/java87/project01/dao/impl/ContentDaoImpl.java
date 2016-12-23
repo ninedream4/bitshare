@@ -58,7 +58,7 @@ public class ContentDaoImpl implements ContentDao {
 	
 	@Override
 	public List<Content> getContentList(Search search) throws Exception {
-		return sqlSession.selectList("contentMapper.getContentList", search);
+		return sqlSession.selectList("ContentMapper.getContentList", search);
 	}
 
 	@Override
