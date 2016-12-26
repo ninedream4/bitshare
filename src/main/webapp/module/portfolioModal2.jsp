@@ -25,7 +25,8 @@
           data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next"
           style="width: 100%; height: auto; display: inline-block;">
           <c:forEach var="i" begin="1" end="5" step="1" varStatus="status">
-          	<img src="/content/download?src=aaa/${status.count}.png" style="width: auto; height: auto;" class="img-responsive" />
+          	alert("asdf");
+          	<img src="/content/download?src=test1/${status.count}.png" style="width: auto; height: auto;" class="img-responsive" />
           </c:forEach>
           
         </div>
@@ -42,10 +43,6 @@
       <div class='comments'>
         <div class='loader'></div>
         <div class='inner'>
-        
-        
-        
-        
         <c:if test="${empty user.email}">
         	<div class='add-new' style="border-bottom:2px #ccc7c7 solid">
 	            <label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label><br />
@@ -55,7 +52,7 @@
         <c:if test="${!empty user.email}">
 	          <div class='add-new' style="border-bottom:2px #ccc7c7 solid">
 	            <label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label><br />
-	            <h3 id="aab"></h3>
+	            <h3>${user.email}</h3>
 	            <input class='input your-Email' value=${user.email} type='hidden'>
 	            <textarea class='form-control your-msg'
 	              placeholder='Type your message here' type='text' rows="3"></textarea>

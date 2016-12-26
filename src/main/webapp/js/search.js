@@ -11,7 +11,3 @@ function loading() {
 }
 
 button.addEventListener('click', loading);
-
-input.addEventListener('keydown', function() {
-	if(event.keyCode == 13) loading();
-});

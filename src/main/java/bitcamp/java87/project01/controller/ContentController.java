@@ -3,6 +3,8 @@ package bitcamp.java87.project01.controller;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import bitcamp.java87.project01.domain.Comment;
 import bitcamp.java87.project01.domain.Content;
@@ -86,8 +90,36 @@ public class ContentController {
 		return "redirect:/index.jsp";
 	}
 
-	@RequestMapping(value = "getContentList", method = RequestMethod.GET)
-	public void getContentList(@RequestParam("search") Search search, Model model) throws Exception {
+//	@RequestMapping(value="getAll", method=RequestMethod.POST, produces="application/json")
+//	public @ResponseBody String getAll() throws Exception {
+//		System.out.println("getAll");
+//		// Business Logic
+//		System.out.println("=1=");
+//		List<User> list = new ArrayList<User>();
+//		System.out.println("=22=");
+//		list.add(userService.getUser("a@naver.com", "a"));
+//		
+//		System.out.println("=2=");
+//		ObjectMapper mapper = new ObjectMapper();
+//		String jsonText = mapper.writeValueAsString(list);
+//		System.out.println("=3="+jsonText);
+//		return jsonText;
+//	}
+	
+	@RequestMapping(value = "getContentList", method = RequestMethod.POST, produces="application/json")
+	public @ResponseBody String getContentList() throws Exception {
+		System.out.println("/content/getContentList : GET");
+		Search search = new Search();
+		Map<String, Object> map = contentService.getContentList(search);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonText = mapper.writeValueAsString(map.get("list"));
+		System.out.println("=!="+jsonText);
+		return jsonText;
+	}
+	
+	@RequestMapping(value = "getContentListByKeyword", method = RequestMethod.POST, produces="application/json")
+	public @ResponseBody String getContentListByKeyword(@RequestParam("search") Search search, Model model) throws Exception {
 		System.out.println("/content/getContentList : GET");
 		
 		if(search.getCurrentPage()==0 ){
@@ -102,34 +134,12 @@ public class ContentController {
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("resultPage", resultPage);
 		model.addAttribute("search", search);
-	}
-	
-	@RequestMapping( value="contentList",method = RequestMethod.POST)
-	public String listUser( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) throws Exception{
 		
-		System.out.println("/content/contentList : POST");
-		System.out.println("search 키워드 : "+search.getSearchKeyword());
-//		if(search.getCurrentPage() ==0 ){
-//			search.setCurrentPage(1);
-//		}
-//		search.setPageSize(pageSize);
-//		System.out.println("pageSize : "+pageSize);
-//		// Business logic ����
-		Map<String , Object> map=contentService.getContentList(search);
-//		
-//		System.out.println(" map : "+map);
-//		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-//		System.out.println(resultPage);
-//		
-//		// Model �� View ����
-//		model.addAttribute("list", map.get("list"));
-//		model.addAttribute("resultPage", resultPage);
-//		model.addAttribute("search", search);
-		
-		System.out.println("contentlist 완료");
-		return "redirect:/search.jsp";
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonText = mapper.writeValueAsString(map.get("list"));
+		System.out.println("=!="+jsonText);
+		return jsonText;
 	}
-	
 
 	@RequestMapping(value = "updateContent", method = RequestMethod.POST)
 	public String updateContent(@ModelAttribute("content") Content content, Model model) throws Exception {
@@ -162,6 +172,7 @@ public class ContentController {
 	@RequestMapping(value = "download")
 	@ResponseBody
 	public void download(OutputStream out, @RequestParam("src") String src) throws Exception {
+		System.out.println("download content...");
 		String path = "c:/bitshare/";
 		path+= src;
 		BufferedInputStream fileIn = new BufferedInputStream(new FileInputStream(path));

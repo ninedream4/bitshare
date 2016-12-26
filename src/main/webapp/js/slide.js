@@ -1,7 +1,32 @@
+var content;
+
+$.ajax({
+	dataType:"json",
+	type:"POST",
+	url:"/content/getContentList",
+	async:false,
+	success:function(data) {
+		
+        if (data != null) {
+        	content = data;
+        } else {
+            alert("불러오기 실패");
+        }
+    }   
+});
+
 $(function(){
+	var length;
+	if(content.length >= 6) {
+		length = 6;
+	}
+	else {
+		length = content.length;
+	}
 	
-	for(var j=1; j<=6; j++){		
-		var $mainRow = $("#mainRow"); //mainRow = document.getElementById("mainRow");
+	console.log(content);
+	for(var j=0; j<=length-1; j++){		
+		var $mainRow = $("#mainRow");
 		mainRow.className = "row";
 
 		var slideDiv = document.createElement("div");
@@ -22,7 +47,7 @@ $(function(){
 							
 					var img = document.createElement("img");
 					
-					img.src = "img/java/"+j+".jpg";
+					img.src = "/content/download/?src="+content[j].title+"/1.png";
 					
 					img.className = "img-responsive";
 					img.alt="";
@@ -33,11 +58,18 @@ $(function(){
 			aTag.appendChild(outerDiv);
 			aTag.appendChild(img);
 			slideDiv.appendChild(aTag);
+			
 			mainRow.appendChild(slideDiv);
-			aTag.after("TITLE");
-
+			var title = document.createElement('h3');
+			title.innerHTML = content[j].title;
+			title.align = "center";
+			aTag.after(title);
+			
+			
 		$("#mainRow").on("click",function(){
-			$("#modalView").modal();
+			$("#modalView").modal(function() {
+				$("#aab").text(content[j].title);
+			});
 		});			
 	}
 });

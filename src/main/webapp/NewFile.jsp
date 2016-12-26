@@ -9,20 +9,25 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 </head>
 <body>
+
 <script type="text/javascript">
+var user;
 $.ajax({
 	dataType:"json",
 	type:"POST",
 	url:"/user/getAll",
-	data:{},
+	async:false,
 	success:function(data) {
         if (data != null) {
-        	
+        	console.log(data[0].userId);
+        	user = data;
         } else {
             alert("불러오기 실패");
         }
     }   
 });
+
+console.log(user[0].userId);
 </script>
 
 <div id="body"></div>
