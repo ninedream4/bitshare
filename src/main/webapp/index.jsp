@@ -67,7 +67,7 @@
 	<div id="mainContent"></div>
 	
 	<!-- Portfolio Grid Section -->
-	<jsp:include page="module/portfolioSection.jsp"/>
+	<jsp:include page="module/mainSection.jsp"/>
 	
 	<!-- About Section -->
 	<jsp:include page="module/aboutSection.jsp"/>

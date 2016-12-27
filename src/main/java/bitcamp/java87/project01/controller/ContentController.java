@@ -89,22 +89,15 @@ public class ContentController {
 
 		return "redirect:/index.jsp";
 	}
+	  @RequestMapping(value = "checkTitle")
+	  public @ResponseBody Boolean checkTitle(String title) throws Exception {
+	    System.out.println("/contents/checkTitle: Start");
+	    
+	    boolean result = contentService.checkTitle(title);
+	    
+	    return result;
+	  }
 
-//	@RequestMapping(value="getAll", method=RequestMethod.POST, produces="application/json")
-//	public @ResponseBody String getAll() throws Exception {
-//		System.out.println("getAll");
-//		// Business Logic
-//		System.out.println("=1=");
-//		List<User> list = new ArrayList<User>();
-//		System.out.println("=22=");
-//		list.add(userService.getUser("a@naver.com", "a"));
-//		
-//		System.out.println("=2=");
-//		ObjectMapper mapper = new ObjectMapper();
-//		String jsonText = mapper.writeValueAsString(list);
-//		System.out.println("=3="+jsonText);
-//		return jsonText;
-//	}
 	
 	@RequestMapping(value = "getContentList", method = RequestMethod.POST, produces="application/json")
 	public @ResponseBody String getContentList() throws Exception {
@@ -117,7 +110,7 @@ public class ContentController {
 		System.out.println("=!="+jsonText);
 		return jsonText;
 	}
-	
+
 	@RequestMapping(value = "getContentListByKeyword", method = RequestMethod.POST, produces="application/json")
 	public @ResponseBody String getContentListByKeyword(@RequestParam("search") Search search, Model model) throws Exception {
 		System.out.println("/content/getContentList : GET");
@@ -188,4 +181,6 @@ public class ContentController {
 		out.flush();
 		out.close();
 	}
+	
+	
 }
