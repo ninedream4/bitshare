@@ -48,7 +48,6 @@
 
 	<!-- Portfolio Modals -->
 	<jsp:include page="module/portfolioModal.jsp"/>
-
 	<!-- login Modal -->
 	<jsp:include page="module/loginModal.jsp"/>
 	<!-- signup Modal -->
@@ -69,6 +68,7 @@
 	
 	<!-- Portfolio Grid Section -->
 	<jsp:include page="module/portfolioSection.jsp"/>
+	
 	<!-- About Section -->
 	<jsp:include page="module/aboutSection.jsp"/>
 	<!-- Footer -->
@@ -89,14 +89,13 @@
 <!--jQuery.validation  -->
 <script src="vendor/jquery/jquery.validate.js"></script>
 <!-- Plugin JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <!-- Contact Form JavaScript -->
 <script src="js/jqBootstrapValidation.js"></script>
 <script src="js/contact_me.js"></script>
 <!-- Theme JavaScript -->
 <script src="js/freelancer.min.js"></script>
-<script src="js/slide.js"></script>
+<!-- <script src="js/slide.js"></script> -->
 <script src="js/fileUploadButton.js"></script>
 <script type="text/javascript" src="js/submit.js"></script>
 <script type="text/javascript" src="js/userValidationCheck.js"></script>
@@ -111,6 +110,8 @@
   
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+<script>
 
+</script>
 </body>
 </html>

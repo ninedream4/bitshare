@@ -15,7 +15,7 @@
       </div>
       <br />
       <div align="center">
-        <h2>Title</h2>
+        <h2>{{title}}</h2>
         <hr class="star-primary">
       </div>
       <div class="modal-body"  align="center">
@@ -25,9 +25,8 @@
           data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next"
           style="width: 100%; height: auto; display: inline-block;">
           <c:forEach var="i" begin="1" end="5" step="1" varStatus="status">
-          	<img src="/content/download?src=aaa/${status.count}.png" style="width: auto; height: auto;" class="img-responsive" />
+          	<img id="src" src="/content/download?src=${content.title}/${status.count}.png" style="width: auto; height: auto;" class="img-responsive" />
           </c:forEach>
-          
         </div>
      
         <div class=center align="center" style="margin:5px">
@@ -42,10 +41,6 @@
       <div class='comments'>
         <div class='loader'></div>
         <div class='inner'>
-        
-        
-        
-        
         <c:if test="${empty user.email}">
         	<div class='add-new' style="border-bottom:2px #ccc7c7 solid">
 	            <label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label><br />
@@ -75,5 +70,4 @@
     </div>
   </div>
 </div>
-
 

@@ -33,7 +33,6 @@ $(function(){
 				slideDiv.className = "col-md-4 slidelist-item";
 				
 				var aTag = document.createElement("a");
-				aTag.href = "javascript:fn()";
 				aTag.className = "portfolio-link";
 				$("aTag").data("toggle", "modal");
 					var outerDiv = document.createElement("div");
@@ -65,11 +64,11 @@ $(function(){
 			title.align = "center";
 			aTag.after(title);
 			
-			
-		$("#mainRow").on("click",function(){
-			$("#modalView").modal(function() {
-				$("#aab").text(content[j].title);
+			var conTle = content[j];
+			$("#mainRow").on("click",function(){
+				console.log(content);
+				$("#modalView").modal(function() {});
 			});
-		});			
+		
 	}
 });
