@@ -23,7 +23,7 @@
 <script id="row-template" type="text/x-handlebars-template">
 {{#each list}}
   <div class="col-md-4 slidelist-item">
-			<a class="portfolio-link" data-toggle="modal">
+			<a id="content{{@index}}" class="portfolio-link" data-title={{title}}>
 				<div class="caption">
 					<div class="caption-content">
 						<i class="fa fa-search-plus fa-3x"></i>
@@ -55,7 +55,30 @@ $.ajax({
     }   
 });
 
-$("#mainRow").on("click",function(list){
+$("a[id*='content']").on("click",function(){
+	console.log($(this).data("title"));
+	
+	var sourcehtml = $("#modal-template").html();
+	var template = Handlebars.compile(sourcehtml);
+	var resulthtml = template({title:$(this).data("title")});
+	$('#modalView').remove();
+	$('#page-top').append(resulthtml);
 	$("#modalView").modal();
+	/*
+	$.ajax({
+		type:"GET",
+		url:"js/clickEvent.js",
+		dataType:"script",
+		data:{
+			"title":$(this).data("title")
+		},
+		success:function() {
+// 			console.log(data);
+		}
+	});
+	*/
+// 	$.getScript("/js/clickEvent.js", function(data) {
+// 		console.log(data);
+// 	});
 });
 </script>

@@ -79,25 +79,18 @@ public class ContentController {
 		return "redirect:/index.jsp";
 	}
 
-	@RequestMapping(value = "getContent", method = RequestMethod.GET)
-	public String getContent(@RequestParam("title") String title, Model model) throws Exception {
+	@RequestMapping(value = "getContent", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody String getContent(@RequestParam("title") String title) throws Exception {
 
 		System.out.println("/content/getContent : GET");
 		// Business Logic
 		Content content = contentService.getContent(title);
-		model.addAttribute("content", content);
-
-		return "redirect:/index.jsp";
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonText = mapper.writeValueAsString(content);
+		System.out.println("=!="+jsonText);
+		return jsonText;
 	}
-	  @RequestMapping(value = "checkTitle")
-	  public @ResponseBody Boolean checkTitle(String title) throws Exception {
-	    System.out.println("/contents/checkTitle: Start");
-	    
-	    boolean result = contentService.checkTitle(title);
-	    
-	    return result;
-	  }
-
 	
 	@RequestMapping(value = "getContentList", method = RequestMethod.POST, produces="application/json")
 	public @ResponseBody String getContentList() throws Exception {
@@ -182,5 +175,12 @@ public class ContentController {
 		out.close();
 	}
 	
-	
+	@RequestMapping(value = "checkTitle")
+	  public @ResponseBody Boolean checkTitle(String title) throws Exception {
+	    System.out.println("/contents/checkTitle: Start");
+	    
+	    boolean result = contentService.checkTitle(title);
+	    
+	    return result;
+	  }
 }

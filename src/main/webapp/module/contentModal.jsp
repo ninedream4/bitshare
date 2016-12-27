@@ -3,6 +3,7 @@
 <div w3-include-html="content.html"></div>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script id="modal-template" type="text/x-handlebars-template">
 <div class="slide modal" id="modalView" tabindex="-1" role="dialog"
   aria-hidden="true">
   <div class="modal-dialog">
@@ -15,17 +16,16 @@
       </div>
       <br />
       <div align="center">
-        <h2>title</h2>
+        <h2>{{title}}</h2>
         <hr class="star-primary">
       </div>
       <div class="modal-body"  align="center">
-
          <div id="slideimg">
         <div class="cycle-slideshow" data-cycle-fx="scrollHorz"
           data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next"
           style="width: 100%; height: auto; display: inline-block;">
           <c:forEach var="i" begin="1" end="5" step="1" varStatus="status">
-          	<img id="src" src="/content/download?src=${content.title}/${status.count}.png" style="width: auto; height: auto;" class="img-responsive" />
+          	<img src="/content/download?src={{title}}/${status.count}.png" style="width: auto; height: auto;" class="img-responsive" />
           </c:forEach>
         </div>
      
@@ -70,4 +70,8 @@
     </div>
   </div>
 </div>
+</script>
+<script src="vendor/jquery/jquery.js"></script>
+<script src="js/jquery.cycle2.js"></script>
 
+<script src="node_modules/handlebars/dist/handlebars.js"></script>

@@ -41,10 +41,6 @@ public class ContentServiceImpl implements ContentService {
 		
 		upload.uploadFile(file, content);
 		
-
-		contentDao.addContent(content);
-		contentDao.addContentTag(content);
-		
 		new PdfToJpegConverter(contentDao, content, content.getFilePath(), content.getFileName()).start();
 
 	}
@@ -124,7 +120,8 @@ public class ContentServiceImpl implements ContentService {
 				synchronized (ContentServiceImpl.this.contentDao) {
 					ConvertFile.convertFileToJpg(content, filePath, fileName);
 				}
-				contentDao.updateContentLength(content);
+				contentDao.addContent(content);
+				contentDao.addContentTag(content);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -47,7 +47,7 @@
 <body id="page-top" class="index">
 
 	<!-- Portfolio Modals -->
-	<jsp:include page="module/portfolioModal.jsp"/>
+	<jsp:include page="module/contentModal.jsp"/>
 	<!-- login Modal -->
 	<jsp:include page="module/loginModal.jsp"/>
 	<!-- signup Modal -->
@@ -106,7 +106,6 @@
 <script src="js/jquery.cycle2.js"></script>
 <!-- fullScreen -->  
 <script src="js/fullScreen.js"></script>
-  
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
 <script>

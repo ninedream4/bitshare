@@ -38,8 +38,7 @@
 
 <body id="page-top" class="index">
 	<!-- Portfolio Modals -->
-	<jsp:include page="module/portfolioModal.jsp"/>
-
+	<jsp:include page="module/contentModal.jsp"/>
 	<!-- login Modal -->
 	<jsp:include page="module/loginModal.jsp"/>
 	<!-- signup Modal -->
@@ -57,7 +56,7 @@
 	<jsp:include page="module/header.jsp"/>
 		
 	<!-- Portfolio Grid Section -->
-	<jsp:include page="module/portfolioSection.jsp"/>
+	<jsp:include page="module/mainSection.jsp"/>
 	<!-- About Section -->
 	<jsp:include page="module/aboutSection.jsp"/>
 	<!-- Footer -->
