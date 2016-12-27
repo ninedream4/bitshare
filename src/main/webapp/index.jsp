@@ -95,7 +95,6 @@
 <script src="js/contact_me.js"></script>
 <!-- Theme JavaScript -->
 <script src="js/freelancer.min.js"></script>
-<!-- <script src="js/slide.js"></script> -->
 <script src="js/fileUploadButton.js"></script>
 <script type="text/javascript" src="js/submit.js"></script>
 <script type="text/javascript" src="js/userValidationCheck.js"></script>

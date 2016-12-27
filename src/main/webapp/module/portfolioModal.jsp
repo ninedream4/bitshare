@@ -15,7 +15,7 @@
       </div>
       <br />
       <div align="center">
-        <h2>{{title}}</h2>
+        <h2>title</h2>
         <hr class="star-primary">
       </div>
       <div class="modal-body"  align="center">
