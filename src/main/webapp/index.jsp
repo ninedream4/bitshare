@@ -104,6 +104,8 @@
 <script type="text/javascript" src="js/checkTitle.js"></script>
 <!-- Slider JavaScript -->
 <script src="js/jquery.cycle2.js"></script>
+<!-- Comment JavaScript -->
+<script src="js/comment.js"></script>
 <!-- fullScreen -->  
 <script src="js/fullScreen.js"></script>
 <!-- Latest compiled and minified JavaScript -->

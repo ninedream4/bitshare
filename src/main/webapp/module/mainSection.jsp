@@ -67,11 +67,18 @@ $("a[id*='content']").on("click",function(){
 		success:function(data) {
 			console.log(data);
 			$("#contentModalTitle").text(data["content"].title);
-			var str = '<div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
-			str += '<img src="/content/download?src=test1/1.png" style="width: auto; height: auto;" class="img-responsive cycle-sentinel cycle-slide" />';
-			str += '<img src="/content/download?src=test1/1.png" style="width: auto; height: auto;" class="img-responsive cycle-slide" />';
-			str += '</div>';
-			$("#contentModalSlide").append(str);
+			
+// 			for(var i in data["comments"]) {
+// 				var cmtUser = data["comments"][i].userId;
+// 				var cmtDesc = data["comments"][i].desc;
+// 				var cmtDiv = "<div style='border:1px #ccc7c7 solid; font:bold 20pt;'>"+cmtUser+cmtDesc+"</div></br>";
+// 				$("#contentModalComment").append(cmtDiv);
+// 			}
+// 			var str = '<div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
+// 			str += '<img src="/content/download?src=test1/1.png" style="width: auto; height: auto;" class="img-responsive cycle-sentinel cycle-slide" />';
+// 			str += '<img src="/content/download?src=test1/1.png" style="width: auto; height: auto;" class="img-responsive cycle-slide" />';
+// 			str += '</div>';
+// 			$("#contentModalSlide").append(str);
 			$("#contentModal").modal();
 		}
 	});
