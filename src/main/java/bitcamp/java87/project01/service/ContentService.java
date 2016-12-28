@@ -14,7 +14,7 @@ public interface ContentService {
 
 	public void addComment(Comment comment) throws Exception;
 	
-	public Content getContent(String title) throws Exception;
+	public Map<String, Object> getContent(String title) throws Exception;
 
 	public Map<String, Object> getContentList(Search search) throws Exception;
 	

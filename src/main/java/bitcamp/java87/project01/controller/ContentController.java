@@ -84,10 +84,10 @@ public class ContentController {
 
 		System.out.println("/content/getContent : GET");
 		// Business Logic
-		Content content = contentService.getContent(title);
+		Map<String, Object> map = contentService.getContent(title);
 		
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonText = mapper.writeValueAsString(content);
+		String jsonText = mapper.writeValueAsString(map);
 		System.out.println("=!="+jsonText);
 		return jsonText;
 	}
@@ -97,9 +97,9 @@ public class ContentController {
 		System.out.println("/content/getContentList : GET");
 		Search search = new Search();
 		Map<String, Object> map = contentService.getContentList(search);
-		
+		System.out.println("=!=");
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonText = mapper.writeValueAsString(map.get("list"));
+		String jsonText = mapper.writeValueAsString(map);
 		System.out.println("=!="+jsonText);
 		return jsonText;
 	}
@@ -137,7 +137,6 @@ public class ContentController {
 		contentService.updateContent(content);
 
 		// Business Logic
-		content = contentService.getContent(content.getTitle());
 		model.addAttribute("content", content);
 
 		return "forward:/index.jsp";

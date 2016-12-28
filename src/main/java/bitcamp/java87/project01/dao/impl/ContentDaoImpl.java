@@ -50,6 +50,10 @@ public class ContentDaoImpl implements ContentDao {
 		return content;
 	}
 	
+	public List<Comment> getComment(int contentId) throws Exception {
+		return sqlSession.selectList("ContentMapper.getComment", contentId);
+	}
+	
 	@Override
 	public List<String> getContentTag(int contentId) throws Exception {
 		// TODO Auto-generated method stub

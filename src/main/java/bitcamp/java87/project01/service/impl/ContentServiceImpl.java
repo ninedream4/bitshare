@@ -51,8 +51,14 @@ public class ContentServiceImpl implements ContentService {
 	}
 	
 	@Override
-	public Content getContent(String title) throws Exception {
-		return contentDao.getContent(title);
+	public Map<String, Object> getContent(String title) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		Content content = contentDao.getContent(title);
+		List<Comment> comments = contentDao.getComment(content.getContentId());
+		map.put("content", content);
+		map.put("comments", comments);
+		
+		return map;
 	}
 
 	
@@ -60,15 +66,9 @@ public class ContentServiceImpl implements ContentService {
 	public Map<String, Object> getContentList(Search search) throws Exception {
 		List<Content> list = contentDao.getContentList(search);
 		int totalCount = contentDao.getTotalCount(search);
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
-		
-		for(Content c : list)
-			System.out.println(c);
-		
 		map.put("totalCount", new Integer(totalCount));
-		
 		return map;
 	}
 	

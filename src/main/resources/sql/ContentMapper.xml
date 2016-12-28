@@ -76,7 +76,7 @@
 	
 	<!-- SQL : SELECT LIST -->
 	<select  id="getContentList"  parameterType="search"	resultMap="contentSelectMap">
-	<!--   	SELECT *
+	<!-- SELECT *
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
 	  					FROM		(	SELECT BRD_ID, USER_ID, TLE, DES, FILE_PATH, FILE_NAME, FILE_LENGTH, CATE, REG_DATE
 											FROM BRDS
@@ -89,8 +89,12 @@
 											</if>
 											ORDER BY REG_DATE ) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
-		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum}  -->
+		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} -->
 					SELECT*FROM BRDS where TLE like '%${searchKeyword}%'
+	 </select>
+	 
+	 <select  id="getComment"  parameterType="int"	resultMap="commentSelectMap">
+		SELECT * FROM CMTS WHERE BRD_ID = #{value} ORDER BY REG_DATE
 	 </select>
 	 
 	<!-- SQL : UPDATE -->

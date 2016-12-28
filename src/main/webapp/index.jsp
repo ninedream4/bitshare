@@ -81,7 +81,7 @@
 			class="fa fa-chevron-up"></i>
 		</a>
 	</div>
-		
+		<div id="modalView"></div>
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
@@ -108,8 +108,6 @@
 <script src="js/fullScreen.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-<script>
 
-</script>
 </body>
 </html>

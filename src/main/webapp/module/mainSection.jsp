@@ -47,7 +47,7 @@ $.ajax({
         if (data != null) {
 			var sourcehtml = $("#row-template").html();
 			var template = Handlebars.compile(sourcehtml);
-			var resulthtml = template({list:data});
+			var resulthtml = template({list:data["list"]});
         	$('#mainRow').html(resulthtml);
         } else {
             alert("불러오기 실패");
@@ -56,29 +56,32 @@ $.ajax({
 });
 
 $("a[id*='content']").on("click",function(){
-	console.log($(this).data("title"));
-	
-	var sourcehtml = $("#modal-template").html();
-	var template = Handlebars.compile(sourcehtml);
-	var resulthtml = template({title:$(this).data("title")});
-	$('#modalView').remove();
-	$('#page-top').append(resulthtml);
-	$("#modalView").modal();
-	/*
 	$.ajax({
+		dataType:"json",
 		type:"GET",
-		url:"js/clickEvent.js",
-		dataType:"script",
-		data:{
-			"title":$(this).data("title")
+		url:"/content/getContent",
+		data: {
+			title:$(this).data("title")	
 		},
-		success:function() {
-// 			console.log(data);
+		async:false,
+		success:function(data) {
+			console.log(data);
+			$("#contentModalTitle").text(data["content"].title);
+			var str = '<div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
+			str += '<img src="/content/download?src=test1/1.png" style="width: auto; height: auto;" class="img-responsive cycle-sentinel cycle-slide" />';
+			str += '<img src="/content/download?src=test1/1.png" style="width: auto; height: auto;" class="img-responsive cycle-slide" />';
+			str += '</div>';
+			$("#contentModalSlide").append(str);
+			$("#contentModal").modal();
 		}
 	});
-	*/
-// 	$.getScript("/js/clickEvent.js", function(data) {
-// 		console.log(data);
-// 	});
+	
+	
+// 	var sourcehtml = $("#modal-template").html();
+// 	var template = Handlebars.compile(sourcehtml);
+// 	var context = {title:$(this).data("title")};
+// 	var resulthtml = template(context);
+// 	$("#contentModal").html(resulthtml);
+// 	$("#contentModal").modal();
 });
 </script>
