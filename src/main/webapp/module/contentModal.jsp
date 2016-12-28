@@ -19,15 +19,7 @@
 			</div>
 			<div class="modal-body" align="center">
 				<div id="slideimg">
-					<div class="cycle-slideshow" data-cycle-fx="scrollHorz"
-						data-cycle-timeout="0" data-cycle-prev="#prev"
-						data-cycle-next="#next"
-						style="width: 100%; height: auto; display: inline-block;">
-						<c:forEach var="i" begin="1" end="5" step="1" varStatus="status">
-							<img src="/content/download?src=test1/${status.count}.png"
-								style="width: auto; height: auto;" class="img-responsive" />
-						</c:forEach>
-					</div>
+					<div id="contentModalSlide"></div>
 					<div class=center align="center" style="margin: 5px">
 						<button type="button" href="#" id="prev" class="btn btn-default">Prev</button>
 						<button type="button" href=# id="next" class="btn btn-default">Next</button>
@@ -35,17 +27,6 @@
 							style="position: absolute; right: 5%"
 							onclick="toggleFullScreen(document.getElementById('slideimg'))">fullScreen</button>
 					</div>
-
-					<div class="cycle-slideshow" data-cycle-fx="scrollHorz"
-						data-cycle-timeout="0" data-cycle-prev="#prev"
-						data-cycle-next="#next"
-						style="width: 100%; height: auto; display: inline-block;">
-						<c:forEach var="i" begin="1" end="5" step="1" varStatus="status">
-							<img src="/content/download?src=test2/${status.count}.png"
-								style="width: auto; height: auto;" class="img-responsive" />
-						</c:forEach>
-					</div>
-					<div id="contentModalSlide"></div>
 				</div>
 			</div>
 			<div class="class" align="center" style="clear: both;"></div>
@@ -63,18 +44,16 @@
 							<div class='add-new' style="border-bottom: 2px #ccc7c7 solid">
 								<label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label><br />
 								<h3 id="aab"></h3>
-								<input class='input your-Email' value=${user.email} type='hidden'>
+								<input class='input your-Email' value=${user.email
+									} type='hidden'>
 								<textarea class='form-control your-msg'
 									placeholder='Type your message here' type='text' rows="3"></textarea>
 								<button class='send-msg btn btn-primary btn-sm'
 									style="margin: 5px; float: right;">Send</button>
-								<br>
-								<br>
+								<br> <br>
 							</div>
 						</c:if>
 						<!--  <div id="contentModalComment">-->
-
-					
 
 
 
