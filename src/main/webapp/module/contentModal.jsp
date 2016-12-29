@@ -19,10 +19,14 @@
 			</div>
 			<div class="modal-body" align="center">
 				<div id="slideimg">
-					<div id="contentModalSlide"></div>
+					<div id="contentModalSlide">
+					
+					</div>
+					
 					<div class=center align="center" style="margin: 5px">
-						<button type="button" href="#" id="prev" class="btn btn-default">Prev</button>
-						<button type="button" href=# id="next" class="btn btn-default">Next</button>
+						<div id="contentModalBtn">
+						</div>
+						
 						<button type="button" class="btn btn-default"
 							style="position: absolute; right: 5%"
 							onclick="toggleFullScreen(document.getElementById('slideimg'))">fullScreen</button>

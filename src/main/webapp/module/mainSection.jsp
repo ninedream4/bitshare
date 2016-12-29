@@ -65,20 +65,27 @@ $("a[id*='content']").on("click",function(){
 		},
 		async:false,
 		success:function(data) {
-			console.log(data);
 			$("#contentModalTitle").text(data["content"].title);
 			
-// 			for(var i in data["comments"]) {
-// 				var cmtUser = data["comments"][i].userId;
-// 				var cmtDesc = data["comments"][i].desc;
-// 				var cmtDiv = "<div style='border:1px #ccc7c7 solid; font:bold 20pt;'>"+cmtUser+cmtDesc+"</div></br>";
-// 				$("#contentModalComment").append(cmtDiv);
-// 			}
-			var str = '<div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
-			str += '<img src="/content/download?src=test1/1.png" style="width: auto; height: auto;" class="img-responsive" />';
-			str += '<img src="/content/download?src=test1/1.png" style="width: auto; height: auto;" class="img-responsive" />';
-			str += '</div>';
-			$("#contentModalSlide").append(str);
+// 			slideView
+			var slideDiv = '<div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
+			var img = '';
+			for(var i=1; i<=data["content"].fileLength; i++) {
+				img += '<img src="/content/download?src='+data["content"].title+'/'+i+'.png" style="width: auto; height: auto;" class="img-responsive" />';
+			}
+			slideDiv += img+'</div>';
+			$("#contentModalSlide").html(slideDiv);
+			
+// 			prev next button
+			var btnPrev = '<button type="button" href="#" id="prev" class="btn btn-default">Prev</button>';
+			var btnNext = '<button type="button" href="#" id="next" class="btn btn-default">Next</button>';
+			$("#contentModalBtn").html(btnPrev+btnNext);
+			
+// 			var cmtUser = data["comments"][i].userId;
+// 			var cmtDesc = data["comments"][i].desc;
+// 			var cmtDiv = "<div style='border:1px #ccc7c7 solid; font:bold 20pt;'>"+cmtUser+cmtDesc+"</div></br>";
+// 			$("#contentModalSlide").append(cmtDiv);
+			
  			$('.cycle-slideshow').cycle();
 			$("#contentModal").modal();
 		}
