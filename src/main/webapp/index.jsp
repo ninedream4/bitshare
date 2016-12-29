@@ -105,7 +105,7 @@
 <!-- Slider JavaScript -->
 <script src="js/jquery.cycle2.js"></script>
 <!-- Comment JavaScript -->
-<script src="js/comment.js"></script>
+<!-- <script src="js/comment.js"></script> -->
 <!-- fullScreen -->  
 <script src="js/fullScreen.js"></script>
 <!-- Latest compiled and minified JavaScript -->

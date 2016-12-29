@@ -12,29 +12,26 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<br />
+			<br/>
 			<div align="center">
 				<h2 id="contentModalTitle"></h2>
 				<hr class="star-primary">
 			</div>
-			<div class="modal-body" align="center">
-				<div id="slideimg">
-					<div id="contentModalSlide">
-					
-					</div>
-					
+			<div id="slideimg" class="modal-body" align="center" style="background-color:#565453; margin-left:10px; margin-right:10px;">
+				<div>
+					<div id="contentModalSlide"></div>
 					<div class=center align="center" style="margin: 5px">
-						<div id="contentModalBtn">
-						</div>
-						
-						<button type="button" class="btn btn-default"
-							style="position: absolute; right: 5%"
-							onclick="toggleFullScreen(document.getElementById('slideimg'))">fullScreen</button>
+						<span id="contentModalBtn"></span>
+						<input type="image" src="/img/slideBtn/fullScreen.png" 
+								onclick="toggleFullScreen(document.getElementById('slideimg'))"></input>
 					</div>
 				</div>
 			</div>
 			<div class="class" align="center" style="clear: both;"></div>
 			<div style="overflow: auto; height: 350px; width: auto;">
+				<div id ="contentModalDesc">
+					여기에 desc랑 업로드 유저 정보
+				</div>
 				<div class='comments'>
 					<div class='loader'></div>
 					<div class='inner'>
@@ -45,25 +42,23 @@
 							</div>
 						</c:if>
 						<c:if test="${!empty user.email}">
-							<div class='add-new' style="border-bottom: 2px #ccc7c7 solid">
-								<label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label><br />
-								<h3 id="aab"></h3>
-								<input class='input your-Email' value=${user.email
-									} type='hidden'>
+							<div class='add-new'>
+								<label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label>
+								<h3>${user.email}</h3>
 								<textarea class='form-control your-msg'
 									placeholder='Type your message here' type='text' rows="3"></textarea>
 								<button class='send-msg btn btn-primary btn-sm'
 									style="margin: 5px; float: right;">Send</button>
-								<br> <br>
 							</div>
+							<hr style="border-bottom: 2px #ccc7c7 solid"/>
 						</c:if>
-						<!--  <div id="contentModalComment">-->
-
-
-
-
-
-						<!-- </div> -->
+						<div id="contentModalComment">
+							<div class="comment">
+								<div id="cmtBody" class="body">
+									
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

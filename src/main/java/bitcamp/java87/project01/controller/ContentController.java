@@ -3,17 +3,16 @@ package bitcamp.java87.project01.controller;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -80,8 +79,8 @@ public class ContentController {
 	}
 
 	@RequestMapping(value = "getContent", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String getContent(@RequestParam("title") String title) throws Exception {
-
+	public ResponseEntity getContent(@RequestParam("title") String title) throws Exception {
+		//utf-8 문제 해결 ResponseEntity
 		System.out.println("/content/getContent : GET");
 		// Business Logic
 		Map<String, Object> map = contentService.getContent(title);
@@ -89,7 +88,10 @@ public class ContentController {
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonText = mapper.writeValueAsString(map);
 		System.out.println("=!="+jsonText);
-		return jsonText;
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
+		return new ResponseEntity(jsonText, responseHeaders, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "getContentList", method = RequestMethod.POST, produces="application/json")
@@ -175,11 +177,11 @@ public class ContentController {
 	}
 	
 	@RequestMapping(value = "checkTitle")
-	  public @ResponseBody Boolean checkTitle(String title) throws Exception {
-	    System.out.println("/contents/checkTitle: Start");
-	    
-	    boolean result = contentService.checkTitle(title);
-	    
-	    return result;
-	  }
+	public @ResponseBody Boolean checkTitle(String title) throws Exception {
+		System.out.println("/contents/checkTitle: Start");
+
+		boolean result = contentService.checkTitle(title);
+
+		return result;
+	}
 }

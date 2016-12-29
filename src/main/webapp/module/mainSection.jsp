@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <input type="hidden" id="contents" name="contents" value="">
 
@@ -13,25 +13,26 @@
 					<hr class="star-primary">
 				</div>
 			</div>
-			<div id="mainRow">
-				
-			</div>
+			<div id="mainRow"></div>
 		</div>
 	</section>
 </div>
 
 <script id="row-template" type="text/x-handlebars-template">
 {{#each list}}
-  <div class="col-md-4 slidelist-item">
+  <div class="col-md-4 slidelist-item" style="align:center">
 			<a id="content{{@index}}" class="portfolio-link" data-title={{title}}>
 				<div class="caption">
 					<div class="caption-content">
 						<i class="fa fa-search-plus fa-3x"></i>
 					</div>
 				</div>
+				</br>
 				<img id="img" class="img-responsive" src="/content/download/?src={{title}}/1.png" alt="">
 			</a>
-			<h3>{{title}}</h3>
+			<div class="col-lg-12 text-center">
+				<h3>{{title}}</h3>
+			</div>
 	</div>
 {{/each}}
 </script>
@@ -68,7 +69,7 @@ $("a[id*='content']").on("click",function(){
 			$("#contentModalTitle").text(data["content"].title);
 			
 // 			slideView
-			var slideDiv = '<div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
+			var slideDiv = '<div id="slideShow" class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
 			var img = '';
 			for(var i=1; i<=data["content"].fileLength; i++) {
 				img += '<img src="/content/download?src='+data["content"].title+'/'+i+'.png" style="width: auto; height: auto;" class="img-responsive" />';
@@ -77,16 +78,32 @@ $("a[id*='content']").on("click",function(){
 			$("#contentModalSlide").html(slideDiv);
 			
 // 			prev next button
-			var btnPrev = '<button type="button" href="#" id="prev" class="btn btn-default">Prev</button>';
-			var btnNext = '<button type="button" href="#" id="next" class="btn btn-default">Next</button>';
+			var btnPrev = '<input type="image" src="/img/slideBtn/left.png" href="#" id="prev"></input>';
+			var btnNext = '<input type="image" src="/img/slideBtn/right.png" href="#" id="next"></input>';
 			$("#contentModalBtn").html(btnPrev+btnNext);
 			
-// 			var cmtUser = data["comments"][i].userId;
-// 			var cmtDesc = data["comments"][i].desc;
-// 			var cmtDiv = "<div style='border:1px #ccc7c7 solid; font:bold 20pt;'>"+cmtUser+cmtDesc+"</div></br>";
-// 			$("#contentModalSlide").append(cmtDiv);
+// 			comments
+			var cmt = '';
+			for(var i in data["comments"]) {
+				var cmtUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'+data["comments"][i].userId+'</span>';
+				var cmtDesc = '<span> • '+data["comments"][i].regDate+'</span><br/>';
+				cmtDesc += '<span>'+data["comments"][i].desc+'</span>';
+				cmtDesc += '<hr style="border: #E5E5E5 solid 1px"></hr>';
+				cmt += cmtUser+cmtDesc;
+			}
+			$("#cmtBody").html(cmt);
 			
- 			$('.cycle-slideshow').cycle();
+			$('.cycle-slideshow').cycle();
+			
+// 			content desc
+			var descUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'+data["content"].userId+'</span>';
+			var descRegDate = '<span> • '+data["content"].regDate+'</span><br/>';
+			var descContent = '<span>'+data["content"].fileDesc+'</span><br/>';
+			var desc = descUser + descRegDate + descContent;
+			
+			$("#contentModalDesc").html(desc);
+			
+ 			
 			$("#contentModal").modal();
 		}
 	});
