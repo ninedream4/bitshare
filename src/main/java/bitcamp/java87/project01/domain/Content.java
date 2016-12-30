@@ -7,13 +7,14 @@ public class Content {
 
 	private String title;
 	private int userId;
+	private String email;
 	private int contentId;
 	private String fileDesc;
 	private String filePath;
 	private String fileName;
 	private int fileLength;
 	private String category;
-	private Date regDate;
+	private String regDate;
 	private List<String> tag;
 	 
 	public Content() {
@@ -33,6 +34,14 @@ public class Content {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public int getContentId() {
@@ -83,11 +92,11 @@ public class Content {
 		this.category = category;
 	}
 
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 
@@ -101,9 +110,9 @@ public class Content {
 
 	@Override
 	public String toString() {
-		return "Content [title=" + title + ", userId=" + userId + ", contentId=" + contentId + ", fileDesc=" + fileDesc
-				+ ", filePath=" + filePath + ", fileName=" + fileName + ", category=" + category + ", regDate="
-				+ regDate + ", tag=" + tag + "]";
+		return "Content [title=" + title + ", userId=" + userId + ", email=" + email + ", contentId=" + contentId
+				+ ", fileDesc=" + fileDesc + ", filePath=" + filePath + ", fileName=" + fileName + ", fileLength="
+				+ fileLength + ", category=" + category + ", regDate=" + regDate + ", tag=" + tag + "]";
 	}
 
 }

@@ -85,7 +85,7 @@ $("a[id*='content']").on("click",function(){
 // 			comments
 			var cmt = '';
 			for(var i in data["comments"]) {
-				var cmtUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'+data["comments"][i].userId+'</span>';
+				var cmtUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'+data["comments"][i].email+'</span>';
 				var cmtDesc = '<span> • '+data["comments"][i].regDate+'</span><br/>';
 				cmtDesc += '<span>'+data["comments"][i].desc+'</span>';
 				cmtDesc += '<hr style="border: #E5E5E5 solid 1px"></hr>';
@@ -96,8 +96,8 @@ $("a[id*='content']").on("click",function(){
 			$('.cycle-slideshow').cycle();
 			
 // 			content desc
-			var descUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'+data["content"].userId+'</span>';
-			var descRegDate = '<span> • '+data["content"].regDate+'</span><br/>';
+			var descUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt; margin:10px"><h4>'+data["content"].email+'</span>';
+			var descRegDate = '<span> • '+data["content"].regDate+'</h4></span><br/>';
 			var descContent = '<span>'+data["content"].fileDesc+'</span><br/>';
 			var desc = descUser + descRegDate + descContent;
 			

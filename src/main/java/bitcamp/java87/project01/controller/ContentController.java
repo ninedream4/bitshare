@@ -57,6 +57,7 @@ public class ContentController {
 		// Business Logic
 		User user = (User)session.getAttribute("user");
 		content.setUserId(user.getUserId());
+		content.setEmail(user.getEmail());
 		contentService.addContent(content, file);
 		
 		return "redirect:/index.jsp";
@@ -95,15 +96,17 @@ public class ContentController {
 	}
 	
 	@RequestMapping(value = "getContentList", method = RequestMethod.POST, produces="application/json")
-	public @ResponseBody String getContentList() throws Exception {
-		System.out.println("/content/getContentList : GET");
+	public ResponseEntity getContentList() throws Exception {
+		System.out.println("/content/getContentList : POST");
 		Search search = new Search();
 		Map<String, Object> map = contentService.getContentList(search);
-		System.out.println("=!=");
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonText = mapper.writeValueAsString(map);
 		System.out.println("=!="+jsonText);
-		return jsonText;
+
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
+		return new ResponseEntity(jsonText, responseHeaders, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "getContentListByKeyword", method = RequestMethod.POST, produces="application/json")

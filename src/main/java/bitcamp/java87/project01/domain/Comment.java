@@ -3,12 +3,12 @@ package bitcamp.java87.project01.domain;
 import java.util.Date;
 
 public class Comment {
-
 	private int commentId;
+	private String email;
 	private int userId;
 	private int contentId;
 	private String desc;
-	private Date regDate;
+	private String regDate;
 	 
 	public Comment() {
 	}
@@ -19,6 +19,14 @@ public class Comment {
 
 	public void setCommentId(int commentId) {
 		this.commentId = commentId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public int getUserId() {
@@ -45,18 +53,19 @@ public class Comment {
 		this.desc = desc;
 	}
 
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 
 	@Override
 	public String toString() {
-		return "comment [commentId=" + commentId + ", userId=" + userId + ", contentId=" + contentId + ", desc=" + desc
-				+ ", regDate=" + regDate + "]";
+		return "Comment [commentId=" + commentId + ", email=" + email + ", userId=" + userId + ", contentId="
+				+ contentId + ", desc=" + desc + ", regDate=" + regDate + "]";
 	}
 
+	
 }

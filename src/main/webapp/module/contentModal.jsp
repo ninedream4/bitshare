@@ -30,7 +30,6 @@
 			<div class="class" align="center" style="clear: both;"></div>
 			<div style="overflow: auto; height: 350px; width: auto;">
 				<div id ="contentModalDesc">
-					여기에 desc랑 업로드 유저 정보
 				</div>
 				<div class='comments'>
 					<div class='loader'></div>
