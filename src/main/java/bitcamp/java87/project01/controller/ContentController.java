@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -108,29 +109,21 @@ public class ContentController {
 		responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
 		return new ResponseEntity(jsonText, responseHeaders, HttpStatus.OK);
 	}
-
-	@RequestMapping(value = "getContentListByKeyword", method = RequestMethod.POST, produces="application/json")
-	public @ResponseBody String getContentListByKeyword(@RequestParam("search") Search search, Model model) throws Exception {
-		System.out.println("/content/getContentList : GET");
-		
-		if(search.getCurrentPage()==0 ){
-			search.setCurrentPage(1);
+	
+	@RequestMapping(value = "getContentListByKeyword/{searchCd}", method = RequestMethod.GET, produces="application/json")
+	  public @ResponseBody String getContentListByKeyword(@PathVariable String searchCd, Model model) throws Exception {
+	    System.out.println("/content/getContentListByKeyword : GET");
+	    System.out.println("!!!!!!!!!!!!!!"+searchCd);
+	    Search search  = new Search();
+	    search.setSearchKeyword(searchCd);
+	    Map<String, Object> map = contentService.getContentList(search);
+	    System.out.println("=!=");
+	    ObjectMapper mapper = new ObjectMapper();
+	    String jsonText = mapper.writeValueAsString(map);
+	    System.out.println("=!="+jsonText);
+	    
+	    return jsonText;
 		}
-		search.setPageSize(pageSize);
-		
-		Map<String, Object> map = contentService.getContentList(search);
-		
-		Page resultPage = new Page(search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-		
-		model.addAttribute("list", map.get("list"));
-		model.addAttribute("resultPage", resultPage);
-		model.addAttribute("search", search);
-		
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonText = mapper.writeValueAsString(map.get("list"));
-		System.out.println("=!="+jsonText);
-		return jsonText;
-	}
 
 	@RequestMapping(value = "updateContent", method = RequestMethod.POST)
 	public String updateContent(@ModelAttribute("content") Content content, Model model) throws Exception {
