@@ -130,7 +130,6 @@ public class ContentServiceImpl implements ContentService {
 
   @Override
   public boolean checkTitle(String title) throws Exception {
-    // TODO Auto-generated method stub
     if(contentDao.checkTitle(title)){
       return true;
     }
