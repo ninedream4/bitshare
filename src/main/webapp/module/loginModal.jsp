@@ -23,7 +23,7 @@
                   <div align="left">
                     <label for="inputEmail" style="font-size: 20px;">Email
                       address </label> <input type="email" class="form-control"
-                      name="email" id="inputEmail" placeholder="Email">
+                      name="email" id="inputEmail" placeholder="Email" autocomplete=off>
                          <span id="nullEmail" style="display:none;color:red;">Enter your Email</span>
                   </div>
                 </div>

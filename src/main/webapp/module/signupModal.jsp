@@ -17,7 +17,7 @@
                  <form name="addUserForm" id="addUserForm" method="post"  action="/user/addUser">
               <div class="form-group" style="width: 70%; margin: auto;">
                 <label for="inputEmail" style="font-size: 20px;">Email address</label> 
-                <input type="text" class="form-control" name="email"  id="email" placeholder="email"  >
+                <input type="text" class="form-control" name="email"  id="email" placeholder="email" autocomplete=off >
                  <span id="errorEmail" style="display:none;color:red;">Check your Email Type</span>
                  <span id="differentEmail"  style="display:none;color:red;">Please enter a different Email</span>    
                    <span id="succsessEmail" style="display:none;color:blue;">Available email.</span>

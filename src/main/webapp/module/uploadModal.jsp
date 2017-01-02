@@ -21,7 +21,7 @@
 								<div style="text-align: left">
 									<label for="title" style="font-size: 20px;">Title</label>
 									<input type="textarea" class="form-control" id="title"
-										name="title" placeholder="Title">
+										name="title" placeholder="Title" autocomplete=off>
 										 <span id="errorTitle" style="display:none;color:red;">Please enter a different title</span>
 								</div>
 							</div>
