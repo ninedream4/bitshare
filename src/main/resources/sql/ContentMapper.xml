@@ -25,7 +25,7 @@
 		<result property="email" column="EMAIL" jdbcType="VARCHAR"/>
 		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
 		<result property="contentId" column="BRD_ID" jdbcType="NUMERIC" />
-		<result property="desc" column="DES" jdbcType="VARCHAR" />
+		<result property="cmtDesc" column="DES" jdbcType="VARCHAR" />
 		<result property="regDate" column="REG_DATE" jdbcType="VARCHAR" />
 	</resultMap>
 	
@@ -38,7 +38,7 @@
 		VALUES (#{title:VARCHAR} , #{userId:VARCHAR} , #{email:VARCHAR},
 		#{fileDesc:VARCHAR} , #{filePath:VARCHAR},
 		#{fileName:VARCHAR} , #{fileLength:NUMERIC},
-		#{category:VARCHAR} , TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))
+		#{category:VARCHAR} , TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI'))
 	</insert>
 
 	<insert id="addContentTag" parameterType="content">
@@ -53,7 +53,7 @@
 	<insert id="addComment" parameterType="comment">
 		INSERT
 		INTO CMTS( USER_ID, BRD_ID, EMAIL, DES, REG_DATE )
-		VALUES ( #{userId}, #{contentId}, #{email}, #{desc}, TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI') )
+		VALUES ( #{userId}, #{contentId}, #{email}, #{cmtDesc}, TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI') )
 	</insert>
 	
 	<!-- SQL : SELECT ONE keyword = title -->

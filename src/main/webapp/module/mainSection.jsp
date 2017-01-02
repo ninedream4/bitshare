@@ -87,14 +87,9 @@
 
 	});
 
-	$(document.body)
-			.on(
-					"click",
-					"a[id*='content']",
-					function() {
+	$(document.body).on("click", "a[id*='content']", function() {
 
-						$
-								.ajax({
+						$.ajax({
 									dataType : "json",
 									type : "GET",
 									url : "/content/getContent",
@@ -105,7 +100,8 @@
 									success : function(data) {
 										$("#contentModalTitle").text(
 												data["content"].title);
-
+										var hiddenContentId = "<input type='hidden' name='contentId' value='"+data["content"].contentId+"' />";
+										$("#cmtContentId").append(hiddenContentId);
 										// 			slideView
 										var slideDiv = '<div id="slideShow" class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
 										var img = '';
@@ -135,7 +131,7 @@
 													+ data["comments"][i].regDate
 													+ '</span><br/>';
 											cmtDesc += '<span>'
-													+ data["comments"][i].desc
+													+ data["comments"][i].cmtDesc
 													+ '</span>';
 											cmtDesc += '<hr style="border: #E5E5E5 solid 1px"></hr>';
 											cmt += cmtUser + cmtDesc;

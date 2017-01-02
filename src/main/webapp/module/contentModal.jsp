@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <div w3-include-html="content.html"></div>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%  %>
 <div class="slide modal" id="contentModal" tabindex="-1" role="dialog"
 	aria-hidden="true">
 	<div class="modal-dialog">
@@ -41,20 +42,20 @@
 							</div>
 						</c:if>
 						<c:if test="${!empty user.email}">
-							<div class='add-new'>
-								<label for="your-Email" style="font-size: 20px;"><h3>Comments</h3></label>
+							<form class='add-new' action="/content/addComment" method="post">
+								<div id="cmtContentId"></div>
+								<label for="your-Email" name="email" style="font-size: 20px;"><h3>Comments</h3></label>
 								<h3>${user.email}</h3>
-								<textarea class='form-control your-msg'
+								<textarea class='form-control your-msg' name="cmtDesc"
 									placeholder='Type your message here' type='text' rows="3"></textarea>
-								<button class='send-msg btn btn-primary btn-sm'
-									style="margin: 5px; float: right;">Send</button>
-							</div>
+								<input type="submit" class='send-msg btn btn-primary btn-sm'
+									style="margin: 5px; float: right;" value="submit"/>
+							</form>
 							<hr style="border-bottom: 2px #ccc7c7 solid"/>
 						</c:if>
 						<div id="contentModalComment">
 							<div class="comment">
 								<div id="cmtBody" class="body">
-									
 								</div>
 							</div>
 						</div>

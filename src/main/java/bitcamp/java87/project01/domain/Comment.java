@@ -1,15 +1,13 @@
 package bitcamp.java87.project01.domain;
 
-import java.util.Date;
-
 public class Comment {
 	private int commentId;
 	private String email;
 	private int userId;
 	private int contentId;
-	private String desc;
+	private String cmtDesc;
 	private String regDate;
-	 
+	
 	public Comment() {
 	}
 
@@ -45,12 +43,12 @@ public class Comment {
 		this.contentId = contentId;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getCmtDesc() {
+		return cmtDesc;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setCmtDesc(String cmtDesc) {
+		this.cmtDesc = cmtDesc;
 	}
 
 	public String getRegDate() {
@@ -64,8 +62,7 @@ public class Comment {
 	@Override
 	public String toString() {
 		return "Comment [commentId=" + commentId + ", email=" + email + ", userId=" + userId + ", contentId="
-				+ contentId + ", desc=" + desc + ", regDate=" + regDate + "]";
+				+ contentId + ", cmtDesc=" + cmtDesc + ", regDate=" + regDate + "]";
 	}
 
-	
 }

@@ -65,18 +65,14 @@ public class ContentController {
 	}
 	
 	@RequestMapping(value = "addComment", method = RequestMethod.POST)
-	public String addComment(@ModelAttribute("comment") Comment comment, HttpSession session, @RequestParam("file") MultipartFile file) throws Exception {
+	public @ResponseBody String addComment(@ModelAttribute("comment") Comment comment, HttpSession session) throws Exception {
 		
-		System.out.println("/content/addContent : POST");
+		System.out.println("/content/addComment : POST");
 		// Business Logic
 		User user = (User)session.getAttribute("user");
 		comment.setUserId(user.getUserId());
-		
-		Content content = (Content)session.getAttribute("content");
-		comment.setContentId(content.getContentId());
-		
+		comment.setEmail(user.getEmail());
 		contentService.addComment(comment);
-		
 		return "redirect:/index.jsp";
 	}
 
@@ -84,6 +80,7 @@ public class ContentController {
 	public ResponseEntity getContent(@RequestParam("title") String title) throws Exception {
 		//utf-8 문제 해결 ResponseEntity
 		System.out.println("/content/getContent : GET");
+		System.out.println("Asdfxzcv");
 		// Business Logic
 		Map<String, Object> map = contentService.getContent(title);
 		
@@ -113,11 +110,9 @@ public class ContentController {
 	@RequestMapping(value = "getContentListByKeyword/{searchCd}", method = RequestMethod.GET, produces="application/json")
 	  public @ResponseBody String getContentListByKeyword(@PathVariable String searchCd, Model model) throws Exception {
 	    System.out.println("/content/getContentListByKeyword : GET");
-	    System.out.println("!!!!!!!!!!!!!!"+searchCd);
 	    Search search  = new Search();
 	    search.setSearchKeyword(searchCd);
 	    Map<String, Object> map = contentService.getContentList(search);
-	    System.out.println("=!=");
 	    ObjectMapper mapper = new ObjectMapper();
 	    String jsonText = mapper.writeValueAsString(map);
 	    System.out.println("=!="+jsonText);
@@ -129,12 +124,9 @@ public class ContentController {
 	public String updateContent(@ModelAttribute("content") Content content, Model model) throws Exception {
 
 		System.out.println("/content/updateContent : POST");
-		System.out.println(content);
-		System.out.println(model);
-
-		contentService.updateContent(content);
-
+		
 		// Business Logic
+		contentService.updateContent(content);
 		model.addAttribute("content", content);
 
 		return "forward:/index.jsp";
@@ -155,12 +147,9 @@ public class ContentController {
 	@RequestMapping(value = "download")
 	@ResponseBody
 	public void download(OutputStream out, @RequestParam("src") String src) throws Exception {
-		System.out.println("download content...");
 		String path = "c:/bitshare/";
 		path+= src;
 		BufferedInputStream fileIn = new BufferedInputStream(new FileInputStream(path));
-		System.out.println("=============");
-		System.out.println(src);
 		
 		int b = 0;
 		while ((b = fileIn.read()) != -1) {

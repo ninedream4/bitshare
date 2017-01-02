@@ -66,7 +66,6 @@
 				</div>
 
 			</ul>
-			<script src="js/search.js"></script>
 		</div>
 	</div>
 </nav>
