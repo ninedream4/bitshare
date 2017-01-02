@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2>recent contents</h2>
+					<h2 id="contentName">recent contents</h2>
 					<hr class="star-primary">
 				</div>
 			</div>
@@ -76,8 +76,7 @@
 						list : data["list"]
 					});
 					$('#mainRow').html(resulthtml);
-					
-					//               $("#contentname").text("keyword :  "+searchCd);
+					$("#contentName").text("keyword :  "+searchCd);
 				} else {
 					alert("불러오기 실패");
 				}
@@ -87,9 +86,14 @@
 
 	});
 
-	$(document.body).on("click", "a[id*='content']", function() {
+	$(document.body)
+			.on(
+					"click",
+					"a[id*='content']",
+					function() {
 
-						$.ajax({
+						$
+								.ajax({
 									dataType : "json",
 									type : "GET",
 									url : "/content/getContent",
@@ -101,9 +105,10 @@
 										$("#contentModalTitle").text(
 												data["content"].title);
 										var hiddenContentId = "<input type='hidden' name='contentId' value='"+data["content"].contentId+"' />";
-										$("#cmtContentId").append(hiddenContentId);
+										$("#cmtContentId").append(
+												hiddenContentId);
 										// 			slideView
-										var slideDiv = '<div id="slideShow" class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
+										var slideDiv = '<div id="slideShow" class="cycle-slideshow" data-cycle-allow-wrap="false" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
 										var img = '';
 										for (var i = 1; i <= data["content"].fileLength; i++) {
 											img += '<img src="/content/download?src='
@@ -114,7 +119,6 @@
 										}
 										slideDiv += img + '</div>';
 										$("#contentModalSlide").html(slideDiv);
-
 										// 			prev next button
 										var btnPrev = '<input type="image" src="/img/slideBtn/left.png" href="#" id="prev"></input>';
 										var btnNext = '<input type="image" src="/img/slideBtn/right.png" href="#" id="next"></input>';
@@ -125,34 +129,40 @@
 										var cmt = '';
 										for ( var i in data["comments"]) {
 											var cmtUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'
-													+ data["comments"][i].userId
+													+ data["comments"][i].email
 													+ '</span>';
-											var cmtDesc = '<span> • '
+											cmtUser += '<span> • '
 													+ data["comments"][i].regDate
-													+ '</span><br/>';
-											cmtDesc += '<span>'
+													+ '  </span>';
+
+											var userIdSession = "${user.userId}";
+											if (data["comments"][i].userId == userIdSession) {
+												cmtUser += "<span><a href='/content/deleteComment'>delete</a></span>";
+											}
+
+											var cmtDesc = '<div>'
 													+ data["comments"][i].cmtDesc
-													+ '</span>';
+													+ '</div>';
 											cmtDesc += '<hr style="border: #E5E5E5 solid 1px"></hr>';
-											cmt += cmtUser + cmtDesc;
+											cmt = cmtUser + cmtDesc;
 										}
 										$("#cmtBody").html(cmt);
 
 										$('.cycle-slideshow').cycle();
 
 										// 			content desc
-										var descUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'
-												+ data["content"].userId
+										var descUser = '<span style="font: bold; color:#33BEB8; font-size: 20pt;">'
+												+ data["content"].email
 												+ '</span>';
-										var descRegDate = '<span> • '
+										var descRegDate = '<span style="font: bold; font-size: 13pt; color:#777777;"> • '
 												+ data["content"].regDate
-												+ '</span><br/>';
-										var descContent = '<span>'
+												+ '</span>';
+										var descContent = '<span style="font: bold; font-size: 15pt;">'
 												+ data["content"].fileDesc
 												+ '</span><br/>';
-										var desc = descUser + descRegDate
-												+ descContent;
-
+										var desc = descContent;
+										$("#contentModalDescUser").html(
+												descUser + descRegDate);
 										$("#contentModalDesc").html(desc);
 
 										$("#contentModal").modal();

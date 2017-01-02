@@ -23,15 +23,15 @@
 					<div id="contentModalSlide"></div>
 					<div class=center align="center" style="margin: 5px">
 						<span id="contentModalBtn"></span>
-						<input type="image" src="/img/slideBtn/fullScreen.png" 
+						<input id="fullScreenIcon" type="image" src="/img/slideBtn/fullScreen.png" 
 								onclick="toggleFullScreen(document.getElementById('slideimg'))"></input>
 					</div>
 				</div>
 			</div>
 			<div class="class" align="center" style="clear: both;"></div>
 			<div style="overflow: auto; height: 350px; width: auto;">
-				<div id ="contentModalDesc">
-				</div>
+				<div id ="contentModalDescUser" style="margin-left:30px; margin-right:30px; padding:10px;"></div>
+				<div id ="contentModalDesc"  style="margin-left:30px; margin-right:30px; padding:10px; border:solid 3px #ccc7c7; border-radius:10px;"></div>
 				<div class='comments'>
 					<div class='loader'></div>
 					<div class='inner'>
@@ -55,8 +55,7 @@
 						</c:if>
 						<div id="contentModalComment">
 							<div class="comment">
-								<div id="cmtBody" class="body">
-								</div>
+								<div id="cmtBody" class="body" style="margin:15px"></div>
 							</div>
 						</div>
 					</div>
