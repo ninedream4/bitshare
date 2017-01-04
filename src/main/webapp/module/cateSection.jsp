@@ -3,7 +3,7 @@
 <div align="center">
 
 
-	<div id="java" style="float: left; width: 50%;">
+	<div id="cateJava" style="float: left; width: 50%;">
 		<section id="slidelist" style="padding-top: 10px; padding-bottom: 10px;">
 			<div align="center">
 				<div class="col-lg-12 text-center">
@@ -11,7 +11,8 @@
 					<hr class="star-primary">
 				</div>
 				<div style="width: 80%; height: auto;">
-					<a href="java.jsp"><img src="img/java/1.jpg" border="0" style="width: 90%; height: 100%;"></a>
+	           <a href="cateJava.jsp"> 
+					<img src="img/java/1.jpg" id="javaimg" border="0" style="width: 90%; height: 100%;"></a>
 				</div>
 			</div>
 		</section>
@@ -25,7 +26,7 @@
 					<hr class="star-primary">
 				</div>
 				<div style="width: 80%; height: auto;">
-					<a href="c_lang.jsp"><img src="img/c_lang/1.jpg" border="0" style="width: 90%; height: 100%;"></a>
+					<a href="cateC.jsp"><img src="img/c_lang/1.jpg" id="c_langimg" border="0" style="width: 90%; height: 100%;"></a>
 				</div>
 			</div>
 		</section>
@@ -41,7 +42,7 @@
 				<hr class="star-primary">
 			</div>
 			<div style="width: 80%; height: auto;">
-				<a href="window.jsp"><img src="img/windows/1.jpg" border="0" style="width: 90%; height: 100%;"></a>
+				<a href="cateWindow.jsp"><img src="img/windows/1.jpg" id="windowsimg" border="0" style="width: 90%; height: 100%;"></a>
 			</div>
 		</div>
 	</section>
@@ -55,7 +56,7 @@
 				<hr class="star-primary">
 			</div>
 			<div style="width: 80%; height: auto;">
-				<a href="etc.jsp"><img src="img/etc.jpg" border="0" style="width: 90%; height: 100%;"></a>
+				<a href="cateEtc.jsp"><img src="img/etc.jpg"  id="etcimg" border="0" style="width: 90%; height: 100%;"></a>
 			</div>
 		</div>
 	</section>

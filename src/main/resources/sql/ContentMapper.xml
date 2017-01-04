@@ -99,6 +99,11 @@
 		SELECT * FROM CMTS WHERE BRD_ID = #{value} ORDER BY REG_DATE
 	 </select>
 	 
+	 <!-- SQL : SELECT BY CATEGORY -->
+	 <select  id="getContentListByCategory"  parameterType="search"  resultMap="contentSelectMap">
+	 SELECT * FROM BRDS where CATE like '%${searchKeyword}%'
+	 </select>
+	 
 	<!-- SQL : UPDATE -->
 	<update id="updateContent" parameterType="content">
 		UPDATE BRDS

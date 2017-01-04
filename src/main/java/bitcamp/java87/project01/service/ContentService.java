@@ -18,6 +18,8 @@ public interface ContentService {
 
 	public Map<String, Object> getContentList(Search search) throws Exception;
 	
+	public Map<String, Object> getContentListByCategory(Search search) throws Exception;
+	
 	public void deleteContent(int contentId) throws Exception;
 	
 	public void deleteComment(Comment comment) throws Exception;

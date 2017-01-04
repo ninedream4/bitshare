@@ -138,4 +138,12 @@ public class ContentServiceImpl implements ContentService {
     }
     return false;
   }
+
+  @Override
+  public Map<String, Object> getContentListByCategory(Search search) throws Exception {
+    List<Content> list = contentDao.getContentListByCategory(search);
+    Map<String, Object> map = new HashMap<String, Object>();
+    map.put("list", list);
+    return map;
+  }
 }

@@ -120,6 +120,20 @@ public class ContentController {
 	    
 	    return jsonText;
 		}
+	
+	 @RequestMapping(value = "getContentListByCategory",  produces="application/json")
+	  public @ResponseBody String getContentListByCategory(@RequestParam("category") String category, Model model) throws Exception {
+	    System.out.println("/content/getContentListByCategory : START");
+	    Search search  = new Search();
+	    search.setSearchKeyword(category);
+	    Map<String, Object> map = contentService.getContentListByCategory(search);
+	    System.out.println("getContentListByCategory");
+	    ObjectMapper mapper = new ObjectMapper();
+	    String jsonText = mapper.writeValueAsString(map);
+	    System.out.println("getContentListByCategory"+jsonText);
+	    
+	    return jsonText;
+	  }
 
 	@RequestMapping(value = "updateContent", method = RequestMethod.POST)
 	public String updateContent(@ModelAttribute("content") Content content, Model model) throws Exception {

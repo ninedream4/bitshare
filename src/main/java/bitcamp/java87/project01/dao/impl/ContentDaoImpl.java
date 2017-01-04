@@ -109,4 +109,9 @@ public class ContentDaoImpl implements ContentDao {
     return false;
   }
 
+  @Override
+  public List<Content> getContentListByCategory(Search search) throws Exception {
+    return sqlSession.selectList("ContentMapper.getContentListByCategory", search);
+  }
+
 }
