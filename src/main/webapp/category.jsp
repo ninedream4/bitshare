@@ -37,7 +37,7 @@
 <link href="css/comment.css" rel="stylesheet" type="text/css">
 <!--  fullScreen CSS-->
 <link href="css/fullScreen.css" rel="stylesheet" type="text/css">
-
+<link rel="stylesheet" href="css/mainSection.css" type="text/css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 

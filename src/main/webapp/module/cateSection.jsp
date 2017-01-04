@@ -4,7 +4,7 @@
 
 
 	<div id="cateJava" style="float: left; width: 50%;">
-		<section id="slidelist" style="padding-top: 10px; padding-bottom: 10px;">
+		<section id="slidelist" style="padding-top: 50px; padding-bottom: 10px;">
 			<div align="center">
 				<div class="col-lg-12 text-center">
 					<h2>java</h2>
@@ -19,7 +19,7 @@
 	</div>
 
 	<div id="c_lang" style="float: left; width: 50%;">
-		<section id="slidelist" style="padding-top: 10px; padding-bottom: 10px;">
+		<section id="slidelist" style="padding-top: 50px; padding-bottom: 10px;">
 			<div align="center">
 				<div class="col-lg-12 text-center">
 					<h2>c/c++</h2>
@@ -35,7 +35,7 @@
 <div class="class" align="center" style="clear: both;"></div>
 
 <div id="windows" style="float: left; width: 50%;">
-	<section id="slidelist" style="padding-top: 10px; padding-bottom: 10px;">
+	<section id="slidelist" style="padding-top: 30px; padding-bottom: 50px;">
 		<div align="center">
 			<div class="col-lg-12 text-center">
 				<h2>window</h2>
@@ -49,7 +49,7 @@
 </div>
 
 <div id="etc" style="float: left; width: 50%;">
-	<section id="slidelist" style="padding-top: 10px; padding-bottom: 10px;">
+	<section id="slidelist" style="padding-top: 30px; padding-bottom: 50px;">
 		<div align="center">
 			<div class="col-lg-12 text-center">
 				<h2>etc</h2>
