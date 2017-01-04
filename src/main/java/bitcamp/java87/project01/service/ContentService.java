@@ -1,5 +1,6 @@
 package bitcamp.java87.project01.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,8 @@ public interface ContentService {
 	public Map<String, Object> getContent(String title) throws Exception;
 
 	public Map<String, Object> getContentList(Search search) throws Exception;
+	
+	public List<Content> getMyContentList(Search search) throws Exception;
 	
 	public Map<String, Object> getContentListByCategory(Search search) throws Exception;
 	

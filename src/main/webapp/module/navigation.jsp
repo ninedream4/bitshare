@@ -28,8 +28,7 @@
 						data-target="#signup">signup</a></li>
 				</c:if>
 				<c:if test="${!empty user.email}">
-					<li><a data-toggle="modal" style="cursor: pointer;"
-						data-target="#mypage" id="email1"></a></li>
+					<li><a  style="cursor: pointer;" id="loginEmail" href="myPage.jsp"></a></li>
 					<li><a href="category.jsp" style="cursor: pointer;"
 						data-target="#categoryView">category</a></li>
 					<li><a data-toggle="modal" style="cursor: pointer;"
@@ -67,6 +66,6 @@
 		var email = "${user.email}";
 		var resultEmail = email.split('@');
 
-		$("#email1").text("Welcome " + resultEmail[0]);
+		$("#loginEmail").text("Welcome " + resultEmail[0]);
 	});
 </script>

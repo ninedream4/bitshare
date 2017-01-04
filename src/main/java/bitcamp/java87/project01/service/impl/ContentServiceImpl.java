@@ -73,6 +73,11 @@ public class ContentServiceImpl implements ContentService {
   }
 
   @Override
+  public List<Content> getMyContentList(Search search) throws Exception {
+    return contentDao.getMyContentList(search);
+  }
+  
+  @Override
   public void deleteContent(int contentId) throws Exception {
     contentDao.deleteContent(contentId);
   }

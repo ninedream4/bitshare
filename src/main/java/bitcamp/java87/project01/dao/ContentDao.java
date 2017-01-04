@@ -22,6 +22,8 @@ public interface ContentDao {
 	
 	public List<Content> getContentListByCategory(Search search) throws Exception;
 
+	public List<Content> getMyContentList(Search search) throws Exception;
+	
 	public List<Comment> getComment(int contentId) throws Exception;
 	
 	public void updateContent(Content content) throws Exception;

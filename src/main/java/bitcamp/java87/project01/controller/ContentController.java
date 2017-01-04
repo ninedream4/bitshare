@@ -3,6 +3,7 @@ package bitcamp.java87.project01.controller;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -105,6 +106,19 @@ public class ContentController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
 		return new ResponseEntity(jsonText, responseHeaders, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "getMyContentList", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody String getMyContentList(HttpSession session) throws Exception {
+	  User user = (User)session.getAttribute("user");
+	  Search search = new Search();
+	  search.setSearchKeyword(user.getEmail());
+	  
+	  List<Content> list = contentService.getMyContentList(search);
+	  ObjectMapper mapper = new ObjectMapper();
+    String jsonText = mapper.writeValueAsString(list);
+    System.out.println("=!="+jsonText);
+	  return jsonText;
 	}
 	
 	@RequestMapping(value = "getContentListByKeyword/{searchCd}", method = RequestMethod.GET, produces="application/json")

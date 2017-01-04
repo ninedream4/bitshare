@@ -95,6 +95,10 @@
 					SELECT * FROM BRDS where TLE like '%${searchKeyword}%'
 	 </select>
 	 
+	 <select id="getMyContentList" parameterType="search" resultMap="contentSelectMap">
+	 	SELECT * FROM BRDS WHERE EMAIL = #{searchKeyword}
+	 </select>
+	 
 	 <select  id="getComment"  parameterType="int"	resultMap="commentSelectMap">
 		SELECT * FROM CMTS WHERE BRD_ID = #{value} ORDER BY REG_DATE
 	 </select>
