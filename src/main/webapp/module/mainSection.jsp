@@ -120,9 +120,11 @@
 
 										// 			comments
 										var cmt = '';
+										
 										for ( var i in data["comments"]) {
+											var nick = (data["comments"][i].email).split('@');
 											var cmtUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'
-													+ data["comments"][i].email
+													+ nick[0]
 													+ '</span>';
 											cmtUser += '<span> • '
 													+ data["comments"][i].regDate
@@ -142,10 +144,10 @@
 										$("#cmtBody").html(cmt);
 
 										$('.cycle-slideshow').cycle();
-
+										var nick = (data["content"].email).split('@');
 										// 			content desc
 										var descUser = '<span style="font: bold; color:#33BEB8; font-size: 20pt;">'
-												+ data["content"].email
+												+ nick[0]
 												+ '</span>';
 										var descRegDate = '<span style="font: bold; font-size: 13pt; color:#777777;"> • '
 												+ data["content"].regDate

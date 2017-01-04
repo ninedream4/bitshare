@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div class="login modal fade" id="login" tabindex="-1" role="dialog"
       aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog" style="width:40%">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"
@@ -12,11 +12,10 @@
 
           </div>
           <div align="center">
-            <div class="modal-body">
-              <br /> <br /> <br /> <br />
+            <div class="modal-body"> <br />
               <h2 class="modal-title" id="myModalLabel">Login</h2>
               <hr class="star-primary"></hr>
-              <br /> <br />
+              
 
               <form name="loginForm" method="post" action="/user/login">
                 <div class="form-group" style="width: 70%; margin: auto;">
@@ -36,7 +35,7 @@
                   </div>
                 </div>
               </form>
-              <br /> <br /> <br /> <br /> <br /> <br />
+              <br /> <br /> 
             </div>
           </div>
           <div class="modal-footer">
