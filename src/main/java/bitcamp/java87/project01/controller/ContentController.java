@@ -80,7 +80,7 @@ public class ContentController {
 	public ResponseEntity getContent(@RequestParam("title") String title) throws Exception {
 		//utf-8 문제 해결 ResponseEntity
 		System.out.println("/content/getContent : GET");
-		System.out.println("Asdfxzcv");
+		System.out.println(title);
 		// Business Logic
 		Map<String, Object> map = contentService.getContent(title);
 		
@@ -111,6 +111,7 @@ public class ContentController {
 	  public @ResponseBody String getContentListByKeyword(@PathVariable String searchCd, Model model) throws Exception {
 	    System.out.println("/content/getContentListByKeyword : GET");
 	    Search search  = new Search();
+	    searchCd=searchCd.toLowerCase();
 	    search.setSearchKeyword(searchCd);
 	    Map<String, Object> map = contentService.getContentList(search);
 	    ObjectMapper mapper = new ObjectMapper();

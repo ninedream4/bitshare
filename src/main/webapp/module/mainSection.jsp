@@ -8,30 +8,29 @@
 	<section id="slidelist">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12 text-center">
+				<div class="text-center">
 					<h2 id="contentName">recent contents</h2>
 					<hr class="star-primary">
 				</div>
 			</div>
-			<div id="mainRow"></div>
+			<div id="mainRow" style="text-align:center"></div>
 		</div>
 	</section>
 </div>
 
 <script id="row-template" type="text/x-handlebars-template">
 {{#each list}}
-  <div class="col-md-4 slidelist-item" style="align:center">
+  <div class="slidelist-item card" style="display:inline-block; padding:0px;">
 			<a id="content{{@index}}" class="portfolio-link" data-title={{title}}>
-				<div class="caption">
-					<div class="caption-content">
-						<i class="fa fa-search-plus fa-3x"></i>
-					</div>
+				<div class="caption" style="margin-top:0px;">
+						<div class="caption-content">
+							<i class="fa fa-search-plus fa-3x"></i>
+						</div>
 				</div>
-				</br>
 				<img id="img" class="img-responsive" src="/content/download/?src={{title}}/1.png" alt="">
 			</a>
 			<div class="col-lg-12 text-center">
-				<h3>{{title}}</h3>
+				<h4>{{title}}</h4>
 			</div>
 	</div>
 {{/each}}
@@ -76,7 +75,7 @@
 						list : data["list"]
 					});
 					$('#mainRow').html(resulthtml);
-					$("#contentName").text("keyword :  "+searchCd);
+					$("#contentName").text("keyword :  " + searchCd);
 				} else {
 					alert("불러오기 실패");
 				}
@@ -86,14 +85,8 @@
 
 	});
 
-	$(document.body)
-			.on(
-					"click",
-					"a[id*='content']",
-					function() {
-
-						$
-								.ajax({
+	$(document.body).on("click", "a[id*='content']", function() {
+						$.ajax({
 									dataType : "json",
 									type : "GET",
 									url : "/content/getContent",
@@ -108,14 +101,14 @@
 										$("#cmtContentId").append(
 												hiddenContentId);
 										// 			slideView
-										var slideDiv = '<div id="slideShow" class="cycle-slideshow" data-cycle-allow-wrap="false" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
+										var slideDiv = '<div id="slideShow" class="cycle-slideshow" data-cycle-allow-wrap="false" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width:100%; height: auto; margin:0px; display: inline-block;">';
 										var img = '';
 										for (var i = 1; i <= data["content"].fileLength; i++) {
 											img += '<img src="/content/download?src='
 													+ data["content"].title
 													+ '/'
 													+ i
-													+ '.png" style="width: auto; height: auto;" class="img-responsive" />';
+													+ '.png" style="width: auto; margin:0px; height: auto;" class="img-responsive" />';
 										}
 										slideDiv += img + '</div>';
 										$("#contentModalSlide").html(slideDiv);

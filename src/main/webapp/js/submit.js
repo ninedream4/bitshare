@@ -1,5 +1,8 @@
 function addUserSubmit(){  
-	document.addUserForm.submit(); 
+	
+	$('#signup').modal('toggle');
+	$('#successSignUp').modal();
+	document.addUserForm.submit();
 }
 
 function updateUserSubmit(){

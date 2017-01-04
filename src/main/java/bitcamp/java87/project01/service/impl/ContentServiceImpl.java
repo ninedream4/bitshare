@@ -41,7 +41,9 @@ public class ContentServiceImpl implements ContentService {
 		
 		upload.uploadFile(file, content);
 		
-		new PdfToJpegConverter(contentDao, content, content.getFilePath(), content.getFileName()).start();
+		Thread t = new PdfToJpegConverter(contentDao, content, content.getFilePath(), content.getFileName());
+		t.setDaemon(true);
+		t.start();
 
 	}
 	
@@ -52,6 +54,7 @@ public class ContentServiceImpl implements ContentService {
 	
 	@Override
 	public Map<String, Object> getContent(String title) throws Exception {
+	  
 		Map<String, Object> map = new HashMap<String, Object>();
 		Content content = contentDao.getContent(title);
 		List<Comment> comments = contentDao.getComment(content.getContentId());

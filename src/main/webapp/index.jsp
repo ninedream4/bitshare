@@ -24,7 +24,6 @@
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-<link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/search_style.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css">
@@ -42,6 +41,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 
+<link rel="stylesheet" href="css/mainSection.css" type="text/css">
 </head>
 
 <body id="page-top" class="index">
@@ -49,9 +49,10 @@
 	<!-- Portfolio Modals -->
 	<jsp:include page="module/contentModal.jsp"/>
 	<!-- login Modal -->
-	<jsp:include page="module/loginModal.jsp"/>
+	<jsp:include page="module/loginModal.jsp"/>	
 	<!-- signup Modal -->
 	<jsp:include page="module/signupModal.jsp"/>
+	<jsp:include page="module/successSignUp.jsp"/>
 	<!-- upload Modal -->
 	<jsp:include page="module/uploadModal.jsp"/>
 	<!-- logout Modal -->

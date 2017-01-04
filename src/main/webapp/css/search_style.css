@@ -5,36 +5,6 @@
 /*   -webkit-font-smoothing: antialiased; */
 }
 
-/* body { */
-/*   -webkit-box-align: center; */
-/*   -webkit-align-items: center; */
-/*       -ms-flex-align: center; */
-/*           align-items: center; */
-/*   background: #974fe4; */
-/*   color: #fff; */
-/*   display: -webkit-box; */
-/*   display: -webkit-flex; */
-/*   display: -ms-flexbox; */
-/*   display: flex; */
-/*   font: 30px/1.375 "Lato", arial, sans-serif; */
-/*   -webkit-flex-flow: column nowrap; */
-/*       -ms-flex-flow: column nowrap; */
-/*           flex-flow: column nowrap; */
-/*   height: 100vh; */
-/*   -webkit-box-pack: center; */
-/*   -webkit-justify-content: center; */
-/*       -ms-flex-pack: center; */
-/*           justify-content: center; */
-/*   width: 100vw; */
-/* } */
-
-.note {
-/*   font-size: 0.375em; */
-/*   font-weight: bold; */
-/*   text-transform: uppercase; */
-/*   color: #6426a7; */
-}
-
 #search {
   -webkit-box-align: center;
   -webkit-align-items: center;

@@ -3,7 +3,7 @@
 <div w3-include-html="content.html"></div>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%  %>
-<div class="slide modal" id="contentModal" tabindex="-1" role="dialog"
+<div class="slide modal" id="contentModal" style="overflow:auto;" tabindex="-1" role="dialog"
 	aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -18,7 +18,7 @@
 				<h2 id="contentModalTitle"></h2>
 				<hr class="star-primary">
 			</div>
-			<div id="slideimg" class="modal-body" align="center" style="background-color:#565453; margin-left:10px; margin-right:10px;">
+			<div id="slideimg" class="modal-body" align="center" style="background-color:#565453; margin:0px; padding:0px;">
 				<div>
 					<div id="contentModalSlide"></div>
 					<div class=center align="center" style="margin: 5px">
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<div class="class" align="center" style="clear: both;"></div>
-			<div style="overflow: auto; height: 350px; width: auto;">
+			<div style="overflow: visible; height:auto; width: auto;">
 				<div id ="contentModalDescUser" style="margin-left:30px; margin-right:30px; padding:10px;"></div>
 				<div id ="contentModalDesc"  style="margin-left:30px; margin-right:30px; padding:10px; border:solid 3px #ccc7c7; border-radius:10px;"></div>
 				<div class='comments'>

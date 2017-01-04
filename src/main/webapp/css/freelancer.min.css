@@ -268,7 +268,6 @@ section.success {
 
 @media ( min-width :767px) {
   #slidelist .slidelist-item {
-  border: 3px solid #dfdddd;
   margin-right: 5px;
   margin-left: 5px;
   width: 32%;

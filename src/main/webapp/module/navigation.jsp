@@ -4,7 +4,7 @@
 
 <nav id="mainNav"
 	class="navbar navbar-default navbar-fixed-top navbar-custom"
-	style="background-color: black;">
+	style="background-color: black; padding:0px;">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header page-scroll" height=100%>
@@ -19,9 +19,8 @@
 		<div class="collapse navbar-collapse" id="menuBar">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
-
 				<c:if test="${empty user.email}">
-					<li><a data-toggle="modal" style="cursor: pointer;"
+					<li><a href="category.jsp" style="cursor: pointer;"
 						data-target="#categoryView">category</a></li>
 					<li><a data-toggle="modal" style="cursor: pointer;"
 						data-target="#login">login</a></li>
@@ -31,7 +30,7 @@
 				<c:if test="${!empty user.email}">
 					<li><a data-toggle="modal" style="cursor: pointer;"
 						data-target="#mypage" id="email1"></a></li>
-					<li><a data-toggle="modal" style="cursor: pointer;"
+					<li><a href="category.jsp" style="cursor: pointer;"
 						data-target="#categoryView">category</a></li>
 					<li><a data-toggle="modal" style="cursor: pointer;"
 						data-target="#upload">upload</a></li>
@@ -40,20 +39,13 @@
 				</c:if>
 			</ul>
 		</div>
-		<!-- /.navbar-collapse -->
 	</div>
+
 	<!-- /.container-fluid -->
-	<div class="container" style="background-color: black;">
+	<div class="container" >
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-left">
-				<li class="hidden"><a href="page-top"></a></li>
-				<li class="page-scroll"><a href="#java">Java</a></li>
-				<li class="page-scroll"><a href="#c_lang">C/C++</a></li>
-				<li class="page-scroll"><a href="#windows">Windows</a></li>
-			</ul>
 			<ul class="nav navbar-nav navbar-right">
-
 				<div id="search">
 					<input type="text" id="searchKeyword" name="searchKeyword"
 						placeholder="Search" />
@@ -64,11 +56,11 @@
 						<i class="fa fa-spinner"></i>
 					</div>
 				</div>
-
 			</ul>
 		</div>
 	</div>
 </nav>
+
 <script src="vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 	$(function() {

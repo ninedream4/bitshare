@@ -43,6 +43,7 @@
 	<jsp:include page="module/loginModal.jsp"/>
 	<!-- signup Modal -->
 	<jsp:include page="module/signupModal.jsp"/>
+	<jsp:include page="module/successSignUp.jsp"/>
 	<!-- upload Modal -->
 	<jsp:include page="module/uploadModal.jsp"/>
 	<!-- logout Modal -->
