@@ -45,9 +45,8 @@
 							<form class='add-new' action="/content/addComment" method="post">
 								<div id="cmtContentId"></div>
 								<label for="your-Email" name="email" style="font-size: 20px;"><h3>Comments</h3></label>
-								<h3>${user.email}</h3>
 								<textarea class='form-control your-msg' name="cmtDesc"
-									placeholder='Type your message here' type='text' rows="3"></textarea>
+									placeholder='Type your message here' style="resize: none;" type='text' rows="3"></textarea>
 								<input type="submit" class='send-msg btn btn-primary btn-sm'
 									style="margin: 5px; float: right;" value="submit"/>
 							</form>

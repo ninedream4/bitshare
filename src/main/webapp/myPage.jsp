@@ -41,6 +41,8 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 
+<link rel="stylesheet" href="css/mainSection.css" type="text/css">
+
 </head>
 
 <body id="page-top" class="index">

@@ -126,7 +126,6 @@ public class ContentController {
 	  public @ResponseBody String getContentListByKeyword(@PathVariable String searchCd, Model model) throws Exception {
 	    System.out.println("/content/getContentListByKeyword : GET");
 	    Search search  = new Search();
-	    searchCd=searchCd.toLowerCase();
 	    search.setSearchKeyword(searchCd);
 	    Map<String, Object> map = contentService.getContentList(search);
 	    ObjectMapper mapper = new ObjectMapper();
