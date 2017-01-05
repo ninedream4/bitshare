@@ -11,9 +11,17 @@
 				<div class="text-center">
 					<h2 id="contentname"></h2>
 					<hr class="star-primary">
+					<div id="updateUserBtn">
+						<center>
+							<button type="button" class="btn btn-info" data-toggle="modal"
+								data-target="#mypage">&nbsp &nbsp &nbsp &nbsp &nbsp
+								INFO UPDATE &nbsp &nbsp &nbsp &nbsp &nbsp</button>
+							</br> </br>
+						</center>
+					</div>
 				</div>
 			</div>
-			<div id="mainRow" style="text-align:center"></div>
+			<div id="mainRow" style="text-align: center"></div>
 		</div>
 	</section>
 </div>
@@ -39,32 +47,30 @@
 <script src="node_modules/handlebars/dist/handlebars.js"></script>
 
 <script>
+	$.ajax({
 
-$.ajax({
-	 
-    dataType : "json",
-    type : "GET",
-    url : "/content/getMyContentList",
-    async : false,
-    success : function(data) {
-      if (data != null) {
-    	console.log(data);
-        var sourcehtml = $("#row-template").html();
-        var template = Handlebars.compile(sourcehtml);
-        var resulthtml = template({
-          list : data
-        });
-        $('#mainRow').html(resulthtml);    
-        $("#contentname").text("my contents");
-      } else {
-        alert("불러오기 실패");
-      }
-    }
-  });
-
-
+		dataType : "json",
+		type : "GET",
+		url : "/content/getMyContentList",
+		async : false,
+		success : function(data) {
+			if (data != null) {
+				console.log(data);
+				var sourcehtml = $("#row-template").html();
+				var template = Handlebars.compile(sourcehtml);
+				var resulthtml = template({
+					list : data
+				});
+				$('#mainRow').html(resulthtml);
+				$("#contentname").text("my page");
+			} else {
+				alert("불러오기 실패");
+			}
+		}
+	});
 
 	$("#searchButton").click(function() {
+		$("#updateUserBtn").hide();
 		var searchCd = $("#searchKeyword").val() //검색할 코드 (실제로 예제에서는 사용 안함)
 
 		//검색할 코드를 넘겨서 값을 가져온다.      
@@ -81,8 +87,8 @@ $.ajax({
 						list : data["list"]
 					});
 					$('#mainRow').html(resulthtml);
-					
-					 $("#contentname").text("keyword :  "+searchCd);
+
+					$("#contentname").text("keyword :  " + searchCd);
 				} else {
 					alert("불러오기 실패");
 				}
@@ -91,9 +97,14 @@ $.ajax({
 		});
 
 	});
-	
-	$(document.body).on("click", "a[id*='content']", function() {
-						$.ajax({
+
+	$(document.body)
+			.on(
+					"click",
+					"a[id*='content']",
+					function() {
+						$
+								.ajax({
 									dataType : "json",
 									type : "GET",
 									url : "/content/getContent",
@@ -105,7 +116,8 @@ $.ajax({
 										$("#contentModalTitle").text(
 												data["content"].title);
 										var hiddenContentId = "<input type='hidden' name='contentId' value='"+data["content"].contentId+"' />";
-										$("#cmtContentId").append(hiddenContentId);
+										$("#cmtContentId").append(
+												hiddenContentId);
 										// 			slideView
 										var slideDiv = '<div id="slideShow" class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
 										var img = '';
@@ -163,8 +175,8 @@ $.ajax({
 									}
 								});
 					});
-	
-	$(document.body).on("click","#email1",function (){
+
+	$(document.body).on("click", "#email1", function() {
 		$("#contentname").text("my contents");
 	});
 </script>

@@ -34,6 +34,7 @@
 		USER_ID, EMAIL, PWD
 		FROM USERS 
 		WHERE EMAIL = #{email}
+		AND PWD = #{pwd}
 	 </select>
 	 
 	 <select 	id="getUserTag"	parameterType="int"	resultType="string">

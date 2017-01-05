@@ -17,7 +17,18 @@
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="menuBar">
+			<ul class="nav navbar-nav navbar-left">
+			<li id="search">
+					<input type="text" id="searchKeyword" name="searchKeyword"
+						placeholder="Search" />
+					<button id="searchButton">
+						<i class="fa fa-search"></i>
+					</button>
+					
+				</li>
+				</ul>
 			<ul class="nav navbar-nav navbar-right">
+				
 				<li class="hidden"><a href="#page-top"></a></li>
 				<c:if test="${empty user.email}">
 					<li><a href="category.jsp" style="cursor: pointer;"
@@ -45,16 +56,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<div id="search">
-					<input type="text" id="searchKeyword" name="searchKeyword"
-						placeholder="Search" />
-					<button id="searchButton">
-						<i class="fa fa-search"></i>
-					</button>
-					<div class="spinner">
-						<i class="fa fa-spinner"></i>
-					</div>
-				</div>
+				
 			</ul>
 		</div>
 	</div>

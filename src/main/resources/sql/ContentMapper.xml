@@ -92,7 +92,10 @@
 											ORDER BY REG_DATE ) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} -->
-					SELECT * FROM BRDS where UPPER(TLE) like UPPER('%${searchKeyword}%')
+					SELECT * FROM BRDS 
+					WHERE UPPER(TLE) LIKE UPPER('%${searchKeyword}%')
+					OR UPPER(CATE) like UPPER('%${searchKeyword}%')
+					
 	 </select>
 	 
 	 <select id="getMyContentList" parameterType="search" resultMap="contentSelectMap">

@@ -56,7 +56,7 @@
 				<hr class="star-primary">
 			</div>
 			<div style="width: 80%; height: auto;">
-				<a href="cateEtc.jsp"><img src="img/etc.jpg"  id="etcimg" border="0" style="width: 90%; height: 100%;"></a>
+				<a href="cateEtc.jsp"><img src="img/etc.png"  id="etcimg" border="0" style="width: 90%; height: 100%;"></a>
 			</div>
 		</div>
 	</section>
