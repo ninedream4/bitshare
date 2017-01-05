@@ -97,8 +97,8 @@ public class ContentDaoImpl implements ContentDao {
 	}
 	
 	@Override
-	public void deleteComment(Comment comment) throws Exception {
-		sqlSession.delete("ContentMapper.deleteComment", comment);
+	public void deleteComment(int commentId) throws Exception {
+		sqlSession.delete("ContentMapper.deleteComment", commentId);
 	}
 
 	@Override

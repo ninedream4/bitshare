@@ -36,7 +36,7 @@ public interface ContentDao {
 
 	public void deleteContentTag(int contentId) throws Exception;
 	
-	public void deleteComment(Comment comment) throws Exception;
+	public void deleteComment(int commentId) throws Exception;
 	
 	public int getTotalCount(Search search) throws Exception;
 	

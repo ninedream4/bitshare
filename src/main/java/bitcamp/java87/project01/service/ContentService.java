@@ -25,7 +25,7 @@ public interface ContentService {
 	
 	public void deleteContent(int contentId) throws Exception;
 	
-	public void deleteComment(Comment comment) throws Exception;
+	public void deleteComment(int commentId) throws Exception;
 
 	public void updateContent(Content content) throws Exception;
 	

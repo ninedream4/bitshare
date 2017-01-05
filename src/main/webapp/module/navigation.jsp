@@ -68,4 +68,31 @@
 
 		$("#loginEmail").text("Welcome " + resultEmail[0]);
 	});
+	
+	$("#searchButton").click(function() {
+		var searchCd = $("#searchKeyword").val() //검색할 코드 (실제로 예제에서는 사용 안함)
+
+		//검색할 코드를 넘겨서 값을 가져온다.      
+		$.ajax({
+			dataType : "json",
+			type : "GET",
+			url : "/content/getContentListByKeyword/" + searchCd,
+			async : false,
+			success : function(data) {
+				if (data != null) {
+					var sourcehtml = $("#row-template").html();
+					var template = Handlebars.compile(sourcehtml);
+					var resulthtml = template({
+						list : data["list"]
+					});
+					$('#mainRow').html(resulthtml);
+					$("#contentName").text("keyword :  " + searchCd);
+				} else {
+					alert("불러오기 실패");
+				}
+
+			}
+		});
+
+	});
 </script>

@@ -66,7 +66,7 @@ public class ContentController {
 	}
 	
 	@RequestMapping(value = "addComment", method = RequestMethod.POST)
-	public @ResponseBody String addComment(@ModelAttribute("comment") Comment comment, HttpSession session) throws Exception {
+	public String addComment(@ModelAttribute("comment") Comment comment, HttpSession session) throws Exception {
 		
 		System.out.println("/content/addComment : POST");
 		// Business Logic
@@ -74,6 +74,7 @@ public class ContentController {
 		comment.setUserId(user.getUserId());
 		comment.setEmail(user.getEmail());
 		contentService.addComment(comment);
+		
 		return "redirect:/index.jsp";
 	}
 
@@ -161,16 +162,11 @@ public class ContentController {
 		return "forward:/index.jsp";
 	}
 	
-	@RequestMapping(value = "updateComment", method = RequestMethod.POST)
-	public String updateComment(@ModelAttribute("comment") Comment comment, Model model, HttpSession session) throws Exception {
-		User user = (User)session.getAttribute("user");
-		comment.setUserId(user.getUserId());
-		
-		Content content = (Content)session.getAttribute("content");
-		comment.setContentId(content.getContentId());
-		contentService.updateComment(comment);
+	@RequestMapping(value = "deleteComment/{commentId}", method = RequestMethod.GET)
+	public String deleteComment(@PathVariable int commentId) throws Exception {
+		contentService.deleteComment(commentId);
 
-		return "forward:/index.jsp";
+		return "redirect:/index.jsp";
 	}
 	
 	@RequestMapping(value = "download")

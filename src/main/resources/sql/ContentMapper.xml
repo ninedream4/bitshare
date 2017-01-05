@@ -155,9 +155,9 @@
 	</delete>
 
 	<delete id="deleteComment" parameterType="comment">
-		DELETE BRD_TAG
+		DELETE CMTS
 		WHERE 
-		BRD_ID = #{value}
+		CMT_ID = #{value}
 	</delete>
 	
 	<!-- SQL : SELECT ROW Count -->	 
