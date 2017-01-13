@@ -8,10 +8,16 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+  <c:if test="${! empty user.email}">
+<%-- 	     <c:if test="${user.email==content.email}"> --%>
+			<button type="button" class="btn btn-default" data-dismiss="modal">modify</button>
+			<button id="deleteBtn" type="button" class="btn btn-default">delete</button>
+			 </c:if>
+			 
+				<button type="button" class="close" data-dismiss="modal"aria-label="Close">			
 					<span aria-hidden="true">&times;</span>
 				</button>
+				 
 			</div>
 			<br/>
 			<div align="center">
@@ -67,3 +73,10 @@
 		</div>
 	</div>
 </div>
+
+<script src="vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+$("#deleteBtn").on("click", function() {
+	$("#contentDelete").modal();
+});
+</script>

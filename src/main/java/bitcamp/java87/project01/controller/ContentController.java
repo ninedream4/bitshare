@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -197,5 +198,17 @@ public class ContentController {
 		boolean result = contentService.checkTitle(title);
 
 		return result;
+	}
+	
+	@RequestMapping(value ="contentDelete/{contentId}")
+	public String  contentDelete(@PathVariable int contentId )throws Exception{
+	  System.out.println("contentDelete Start");
+	  
+	  System.out.println("deleteContent !");
+	  contentService.deleteContent(contentId);	
+	  
+
+	  System.out.println("deleteContent @");
+	  return "forward:/myPage.jsp"; 
 	}
 }

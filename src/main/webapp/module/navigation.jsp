@@ -33,8 +33,7 @@
 						data-target="#categoryView">category</a></li>
 					<li><a data-toggle="modal" style="cursor: pointer;"
 						data-target="#upload">upload</a></li>
-					<li><a data-toggle="modal" style="cursor: pointer;"
-						data-target="#logout">logout</a></li>
+					<li><a data-toggle="modal" style="cursor: pointer;"	data-target="#logout">logout</a></li>
 				</c:if>
 			</ul>
 		</div>

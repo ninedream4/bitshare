@@ -33,4 +33,5 @@ public interface ContentService {
 	
 	public boolean checkTitle(String title) throws Exception;
 	
+
 }

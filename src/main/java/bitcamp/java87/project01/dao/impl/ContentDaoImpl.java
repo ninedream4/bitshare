@@ -88,7 +88,7 @@ public class ContentDaoImpl implements ContentDao {
 	
 	@Override
 	public void deleteContent(int contentId) throws Exception {
-		sqlSession.selectOne("ContentMapper.deleteContent", contentId);
+		sqlSession.delete("ContentMapper.deleteContent", contentId);
 	}
 	
 	@Override
@@ -117,6 +117,12 @@ public class ContentDaoImpl implements ContentDao {
   @Override
   public List<Content> getContentListByCategory(Search search) throws Exception {
     return sqlSession.selectList("ContentMapper.getContentListByCategory", search);
+  }
+
+  @Override
+  public void deleteContent(Content contentId) throws Exception {
+    // TODO Auto-generated method stub
+    
   }
 
 }

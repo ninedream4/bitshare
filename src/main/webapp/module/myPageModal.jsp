@@ -19,7 +19,7 @@
                 <label for="inputEmail" style="font-size: 20px;">Email address</label> 
                 <input type="text" class="form-control" placeholder="${user.email}" autocomplete=off>
                 <input name="userId" type="hidden" value="${user.userId }"/>
-         		<input name="email" type="hidden" value="${user.email }"/>
+         		    <input name="email" type="hidden" value="${user.email }"/>
                                
                  <span id="errorEmail" style="display:none;color:red;">Check your Email Type</span>
                  <span id="differentEmail"  style="display:none;color:red;">Please enter a different Email</span>    

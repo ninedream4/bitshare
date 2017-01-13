@@ -23,6 +23,9 @@
   <div class="slidelist-item card" style="display:inline-block; padding:0px;">
 			<a id="content{{@index}}" class="portfolio-link" data-title={{title}}>
 				<div class="caption" style="margin-top:0px;">
+            <div id=header>
+           <img src="img/delete.png" id="deleteImg" style="width: 10%; height: 10%;" align="right">
+          </div>
 						<div class="caption-content">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
@@ -37,7 +40,11 @@
 </script>
 
 <script src="node_modules/handlebars/dist/handlebars.js"></script>
-
+<script>
+$("#deleteImg").on("click",function(){
+	alert("dddd");
+})
+</script>
 <script>
 	$.ajax({
 		dataType : "json",
@@ -95,6 +102,7 @@
 									},
 									async : false,
 									success : function(data) {
+										/* $("#contentDeleteFormBt").attr("action","/content/contentDelete/"+data["content"].contentId); */
 										$("#contentModalTitle").text(
 												data["content"].title);
 										var hiddenContentId = "<input type='hidden' name='contentId' value='"+data["content"].contentId+"' />";

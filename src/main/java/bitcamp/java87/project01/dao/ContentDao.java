@@ -32,7 +32,7 @@ public interface ContentDao {
 	
 	public void updateContentLength(Content content) throws Exception;
 	
-	public void deleteContent(int contentId) throws Exception;
+	public void deleteContent(Content contentId) throws Exception;
 
 	public void deleteContentTag(int contentId) throws Exception;
 	
@@ -41,5 +41,7 @@ public interface ContentDao {
 	public int getTotalCount(Search search) throws Exception;
 	
 	public boolean checkTitle(String title)throws Exception;
+
+  void deleteContent(int contentId) throws Exception;
 
 }

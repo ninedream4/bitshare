@@ -41,8 +41,7 @@
 
 <script>
 
-$.ajax({
-	 
+$.ajax({	 
     dataType : "json",
     type : "GET",
     url : "/content/getMyContentList",
@@ -103,6 +102,7 @@ $.ajax({
 									},
 									async : false,
 									success : function(data) {
+								$("#contentDeleteFormBt").attr("action", "/content/contentDelete/"+data["content"].contentId); 
 										$("#contentModalTitle").text(
 												data["content"].title);
 										var hiddenContentId = "<input type='hidden' name='contentId' value='"+data["content"].contentId+"' />";
@@ -134,12 +134,12 @@ $.ajax({
 													+ '</span>';
 											var cmtDesc = '<span> • '
 													+ data["comments"][i].regDate
-													+ '</span><br/>';
+													+ '</span><br/>';													
 											cmtDesc += '<span>'
 													+ data["comments"][i].cmtDesc
 													+ '</span>';
 											cmtDesc += '<hr style="border: #E5E5E5 solid 1px"></hr>';
-											cmt += cmtUser + cmtDesc;
+											cmt += cmtUser + cmtDesc;											
 										}
 										$("#cmtBody").html(cmt);
 
@@ -156,8 +156,7 @@ $.ajax({
 												+ data["content"].fileDesc
 												+ '</span><br/>';
 										var desc = descUser + descRegDate
-												+ descContent;
-
+												+ descContent;								
 										$("#contentModalDesc").html(desc);
 
 										$("#contentModal").modal();

@@ -142,10 +142,10 @@
 	</update>
 	
 	<!-- delete -->
-	<delete id="deleteContent" parameterType="comment">
-		DELETE BRDS
-		WHERE USER_ID = #{userId}
-		AND BRD_ID = #{contentId}
+	<delete id="deleteContent" parameterType="int">
+		DELETE  FROM BRDS
+		WHERE
+		BRD_ID = #{value}
 	</delete>
 	
 	<delete id="deleteContentTag" parameterType="int">

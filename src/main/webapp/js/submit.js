@@ -23,3 +23,6 @@ function addContentSubmit() {
 function getContentListSubmit() {
 	document.getContentListForm.submit();
 }
+function  contentDeleteSubmit(){
+	document.contentDeleteForm.submit();
+}
