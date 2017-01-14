@@ -95,6 +95,7 @@
 					SELECT * FROM BRDS 
 					WHERE UPPER(TLE) LIKE UPPER('%${searchKeyword}%')
 					OR UPPER(CATE) like UPPER('%${searchKeyword}%')
+					ORDER BY BRD_ID DESC
 					
 	 </select>
 	 
