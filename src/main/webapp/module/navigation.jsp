@@ -20,7 +20,7 @@
 			<ul class="nav navbar-nav navbar-left">
 			<li id="search">
 					<input type="text" id="searchKeyword" name="searchKeyword"
-						placeholder="Search" />
+						placeholder="Search" onkeypress="if(event.keyCode==13) {search(); return false;}"/>
 					<button id="searchButton">
 						<i class="fa fa-search"></i>
 					</button>
@@ -31,7 +31,7 @@
 				
 				<li class="hidden"><a href="#page-top"></a></li>
 				<c:if test="${empty user.email}">
-					<li><a href="category.jsp" style="cursor: pointer;"
+					<li><a href="category.jsp#cate" onclick="window.location.reload(true);" style="cursor: pointer;"
 						data-target="#categoryView">category</a></li>
 					<li><a data-toggle="modal" style="cursor: pointer;"
 						data-target="#login">login</a></li>
@@ -40,11 +40,12 @@
 				</c:if>
 				<c:if test="${!empty user.email}">
 					<li><a  style="cursor: pointer;" id="loginEmail" href="myPage.jsp"></a></li>
-					<li><a href="category.jsp" style="cursor: pointer;"
+					<li><a href="category.jsp#cate" onclick="window.location.reload(true);" style="cursor: pointer;"
 						data-target="#categoryView">category</a></li>
 					<li><a data-toggle="modal" style="cursor: pointer;"
 						data-target="#upload">upload</a></li>
-					<li><a data-toggle="modal" style="cursor: pointer;"	data-target="#logout">logout</a></li>
+					<li><a data-toggle="modal" style="cursor: pointer;"
+						data-target="#logout">logout</a></li>
 				</c:if>
 			</ul>
 		</div>

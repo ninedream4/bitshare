@@ -23,9 +23,6 @@
   <div class="slidelist-item card" style="display:inline-block; padding:0px;">
 			<a id="content{{@index}}" class="portfolio-link" data-title={{title}}>
 				<div class="caption" style="margin-top:0px;">
-            <div id=header>
-           <img src="img/delete.png" id="deleteImg" style="width: 10%; height: 10%;" align="right">
-          </div>
 						<div class="caption-content">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
@@ -40,11 +37,7 @@
 </script>
 
 <script src="node_modules/handlebars/dist/handlebars.js"></script>
-<script>
-$("#deleteImg").on("click",function(){
-	alert("dddd");
-})
-</script>
+
 <script>
 	$.ajax({
 		dataType : "json",
@@ -75,7 +68,6 @@ $("#deleteImg").on("click",function(){
 									},
 									async : false,
 									success : function(data) {
-										/* $("#contentDeleteFormBt").attr("action","/content/contentDelete/"+data["content"].contentId); */
 										$("#contentModalTitle").text(
 												data["content"].title);
 										var hiddenContentId = "<input type='hidden' name='contentId' value='"+data["content"].contentId+"' />";
@@ -164,6 +156,7 @@ $("#deleteImg").on("click",function(){
 					});
 					$('#mainRow').html(resulthtml);
 					$("#contentName").text("keyword :  " + searchCd);
+					location.href = "#mainRow";
 				} else {
 					alert("불러오기 실패");
 				}
@@ -172,4 +165,32 @@ $("#deleteImg").on("click",function(){
 		});
 
 	});
+	
+	function search() {
+		var searchCd = $("#searchKeyword").val() //검색할 코드 (실제로 예제에서는 사용 안함)
+
+		//검색할 코드를 넘겨서 값을 가져온다.      
+		$.ajax({
+			dataType : "json",
+			type : "GET",
+			url : "/content/getContentListByKeyword/" + searchCd,
+			async : false,
+			success : function(data) {
+				if (data != null) {
+					console.log(data);
+					var sourcehtml = $("#row-template").html();
+					var template = Handlebars.compile(sourcehtml);
+					var resulthtml = template({
+						list : data["list"]
+					});
+					$('#mainRow').html(resulthtml);
+					$("#contentName").text("keyword :  " + searchCd);
+					location.href = "#mainRow";
+				} else {
+					alert("불러오기 실패");
+				}
+
+			}
+		});
+	}
 </script>

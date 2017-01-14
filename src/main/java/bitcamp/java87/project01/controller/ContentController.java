@@ -89,7 +89,6 @@ public class ContentController {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonText = mapper.writeValueAsString(map);
-		System.out.println("=!="+jsonText);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
@@ -103,7 +102,6 @@ public class ContentController {
 		Map<String, Object> map = contentService.getContentList(search);
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonText = mapper.writeValueAsString(map);
-		System.out.println("=!="+jsonText);
 
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
@@ -119,7 +117,6 @@ public class ContentController {
 	  List<Content> list = contentService.getMyContentList(search);
 	  ObjectMapper mapper = new ObjectMapper();
     String jsonText = mapper.writeValueAsString(list);
-    System.out.println("=!="+jsonText);
 	  return jsonText;
 	}
 	
@@ -131,7 +128,6 @@ public class ContentController {
 	    Map<String, Object> map = contentService.getContentList(search);
 	    ObjectMapper mapper = new ObjectMapper();
 	    String jsonText = mapper.writeValueAsString(map);
-	    System.out.println("=!="+jsonText);
 	    
 	    return jsonText;
 		}
@@ -142,10 +138,8 @@ public class ContentController {
 	    Search search  = new Search();
 	    search.setSearchKeyword(category);
 	    Map<String, Object> map = contentService.getContentListByCategory(search);
-	    System.out.println("getContentListByCategory");
 	    ObjectMapper mapper = new ObjectMapper();
 	    String jsonText = mapper.writeValueAsString(map);
-	    System.out.println("getContentListByCategory"+jsonText);
 	    
 	    return jsonText;
 	  }
@@ -199,11 +193,8 @@ public class ContentController {
 	public String  contentDelete(@PathVariable int contentId )throws Exception{
 	  System.out.println("contentDelete Start");
 	  
-	  System.out.println("deleteContent !");
 	  contentService.deleteContent(contentId);	
-	  
 
-	  System.out.println("deleteContent @");
 	  return "forward:/myPage.jsp"; 
 	}
 }

@@ -52,6 +52,9 @@ public class UserController {
 
 		System.out.println("/user/addUser : POST");
 		// Business Logic
+		List<String> list = new ArrayList<String>();
+		list.add("java");
+		user.setTag(list);
 		userService.addUser(user);
 
 		return "redirect:/index.jsp";
@@ -89,21 +92,7 @@ public class UserController {
 	
 	}
 	
-	@RequestMapping(value="getAll", method=RequestMethod.POST, produces="application/json")
-	public @ResponseBody String getAll() throws Exception {
-		System.out.println("getAll");
-		// Business Logic
-		System.out.println("=1=");
-		List<User> list = new ArrayList<User>();
-		System.out.println("=22=");
-		list.add(userService.getUser("a@naver.com", "a"));
-		
-		System.out.println("=2=");
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonText = mapper.writeValueAsString(list);
-		System.out.println("=3="+jsonText);
-		return jsonText;
-	}
+	
 
 	@RequestMapping(value="logout", method=RequestMethod.POST)
 	public String logout(HttpSession session) throws Exception {
@@ -141,7 +130,6 @@ public class UserController {
 
 		Page resultPage = new Page(search.getCurrentPage(), ((Integer) map.get("totalCount")).intValue(), pageUnit,
 				pageSize);
-		System.out.println(resultPage);
 
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("resultPage", resultPage);

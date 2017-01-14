@@ -40,11 +40,6 @@
 
               <br />
 
-              <div class="form-group" style="width: 70%; margin: auto;">
-                <label for="inputTag" style="font-size: 20px;">Tag</label> <input
-                  type="text" class="form-control" id="inputTag" name="tag"
-                  placeholder="Tag">
-              </div>
             </form>
 
             <br />

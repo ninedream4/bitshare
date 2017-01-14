@@ -41,7 +41,6 @@ public class ContentDaoImpl implements ContentDao {
 	
 	@Override
 	public void addComment(Comment comment) throws Exception {
-		System.out.println("dao" + comment);
 		sqlSession.insert("ContentMapper.addComment", comment);
 		
 	}
