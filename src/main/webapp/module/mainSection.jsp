@@ -65,33 +65,6 @@ $("#deleteImg").on("click",function(){
 		}
 	});
 
-	$("#searchButton").click(function() {
-		var searchCd = $("#searchKeyword").val() //검색할 코드 (실제로 예제에서는 사용 안함)
-
-		//검색할 코드를 넘겨서 값을 가져온다.      
-		$.ajax({
-			dataType : "json",
-			type : "GET",
-			url : "/content/getContentListByKeyword/" + searchCd,
-			async : false,
-			success : function(data) {
-				if (data != null) {
-					var sourcehtml = $("#row-template").html();
-					var template = Handlebars.compile(sourcehtml);
-					var resulthtml = template({
-						list : data["list"]
-					});
-					$('#mainRow').html(resulthtml);
-					$("#contentName").text("keyword :  " + searchCd);
-				} else {
-					alert("불러오기 실패");
-				}
-
-			}
-		});
-
-	});
-
 	$(document.body).on("click", "a[id*='content']", function() {
 						$.ajax({
 									dataType : "json",
@@ -125,10 +98,9 @@ $("#deleteImg").on("click",function(){
 										var btnNext = '<input type="image" src="/img/slideBtn/right.png" href="#" id="next"></input>';
 										$("#contentModalBtn").html(
 												btnPrev + btnNext);
-
+										
 										// 			comments
 										var cmt = '';
-										
 										for ( var i in data["comments"]) {
 											var nick = (data["comments"][i].email).split('@');
 											var cmtUser = '<span style="font: bold; color:#33BEB8; font-size: 15pt;">'
@@ -140,14 +112,14 @@ $("#deleteImg").on("click",function(){
 
 											var userIdSession = "${user.userId}";
 											if (data["comments"][i].userId == userIdSession) {
-												cmtUser += "<span><a href='/content/deleteComment'>delete</a></span>";
+												cmtUser += "<span><a href='/content/deleteComment/"+data["comments"][i].commentId+"'>delete</a></span>";
 											}
 
 											var cmtDesc = '<div>'
 													+ data["comments"][i].cmtDesc
 													+ '</div>';
 											cmtDesc += '<hr style="border: #E5E5E5 solid 1px"></hr>';
-											cmt = cmtUser + cmtDesc;
+											cmt += cmtUser + cmtDesc;
 										}
 										$("#cmtBody").html(cmt);
 
@@ -172,4 +144,32 @@ $("#deleteImg").on("click",function(){
 									}
 								});
 					});
+	
+	$("#searchButton").click(function() {
+		var searchCd = $("#searchKeyword").val() //검색할 코드 (실제로 예제에서는 사용 안함)
+
+		//검색할 코드를 넘겨서 값을 가져온다.      
+		$.ajax({
+			dataType : "json",
+			type : "GET",
+			url : "/content/getContentListByKeyword/" + searchCd,
+			async : false,
+			success : function(data) {
+				if (data != null) {
+					console.log(data);
+					var sourcehtml = $("#row-template").html();
+					var template = Handlebars.compile(sourcehtml);
+					var resulthtml = template({
+						list : data["list"]
+					});
+					$('#mainRow').html(resulthtml);
+					$("#contentName").text("keyword :  " + searchCd);
+				} else {
+					alert("불러오기 실패");
+				}
+
+			}
+		});
+
+	});
 </script>

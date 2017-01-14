@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="login modal fade" id="login" tabindex="-1" role="dialog"
-      aria-hidden="true">
-      <div class="modal-dialog" style="width:40%">
-        <div class="modal-content">
+<div class="modal modal-center fade" id="login" tabindex="-1" role="dialog" aria-labelledby="mySmallCenterModalLabel">
+  <div class="modal-dialog modal-sm modal-center" role="document">
+    <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"
               aria-label="Close">

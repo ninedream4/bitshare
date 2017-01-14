@@ -8,30 +8,37 @@
 	<section id="slidelist">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2 id="contentname">recent contents</h2>
+				<div class="text-center">
+					<h2 id="contentname"></h2>
 					<hr class="star-primary">
+					<div id="updateUserBtn">
+						<center>
+							<button type="button" class="btn btn-info" data-toggle="modal"
+								data-target="#mypage">&nbsp &nbsp &nbsp &nbsp &nbsp
+								INFO UPDATE &nbsp &nbsp &nbsp &nbsp &nbsp</button>
+							</br> </br>
+						</center>
+					</div>
 				</div>
 			</div>
-			<div id="mainRow"></div>
+			<div id="mainRow" style="text-align: center"></div>
 		</div>
 	</section>
 </div>
 
 <script id="row-template" type="text/x-handlebars-template">
 {{#each list}}
-  <div class="col-md-4 slidelist-item" style="align:center">
+  <div class="slidelist-item card" style="display:inline-block; padding:0px;">
 			<a id="content{{@index}}" class="portfolio-link" data-title={{title}}>
-				<div class="caption">
-					<div class="caption-content">
-						<i class="fa fa-search-plus fa-3x"></i>
-					</div>
+				<div class="caption" style="margin-top:0px;">
+						<div class="caption-content">
+							<i class="fa fa-search-plus fa-3x"></i>
+						</div>
 				</div>
-				</br>
 				<img id="img" class="img-responsive" src="/content/download/?src={{title}}/1.png" alt="">
 			</a>
 			<div class="col-lg-12 text-center">
-				<h3>{{title}}</h3>
+				<h4>{{title}}</h4>
 			</div>
 	</div>
 {{/each}}
@@ -63,8 +70,30 @@ $.ajax({
   });
 
 
+	$.ajax({
+
+		dataType : "json",
+		type : "GET",
+		url : "/content/getMyContentList",
+		async : false,
+		success : function(data) {
+			if (data != null) {
+				console.log(data);
+				var sourcehtml = $("#row-template").html();
+				var template = Handlebars.compile(sourcehtml);
+				var resulthtml = template({
+					list : data
+				});
+				$('#mainRow').html(resulthtml);
+				$("#contentname").text("my page");
+			} else {
+				alert("불러오기 실패");
+			}
+		}
+	});
 
 	$("#searchButton").click(function() {
+		$("#updateUserBtn").hide();
 		var searchCd = $("#searchKeyword").val() //검색할 코드 (실제로 예제에서는 사용 안함)
 
 		//검색할 코드를 넘겨서 값을 가져온다.      
@@ -81,8 +110,8 @@ $.ajax({
 						list : data["list"]
 					});
 					$('#mainRow').html(resulthtml);
-					
-					 $("#contentname").text("keyword :  "+searchCd);
+
+					$("#contentname").text("keyword :  " + searchCd);
 				} else {
 					alert("불러오기 실패");
 				}
@@ -91,9 +120,14 @@ $.ajax({
 		});
 
 	});
-	
-	$(document.body).on("click", "a[id*='content']", function() {
-						$.ajax({
+
+	$(document.body)
+			.on(
+					"click",
+					"a[id*='content']",
+					function() {
+						$
+								.ajax({
 									dataType : "json",
 									type : "GET",
 									url : "/content/getContent",
@@ -106,7 +140,8 @@ $.ajax({
 										$("#contentModalTitle").text(
 												data["content"].title);
 										var hiddenContentId = "<input type='hidden' name='contentId' value='"+data["content"].contentId+"' />";
-										$("#cmtContentId").append(hiddenContentId);
+										$("#cmtContentId").append(
+												hiddenContentId);
 										// 			slideView
 										var slideDiv = '<div id="slideShow" class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-prev="#prev" data-cycle-next="#next" style="width: 100%; height: auto; display: inline-block;">';
 										var img = '';
@@ -163,8 +198,8 @@ $.ajax({
 									}
 								});
 					});
-	
-	$(document.body).on("click","#email1",function (){
+
+	$(document.body).on("click", "#email1", function() {
 		$("#contentname").text("my contents");
 	});
 </script>

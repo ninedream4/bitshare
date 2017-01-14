@@ -17,7 +17,7 @@
                  <form name="updateUserForm" id="updateUserForm" method="post"  action="/user/updateUser">
               <div class="form-group" style="width: 70%; margin: auto;">
                 <label for="inputEmail" style="font-size: 20px;">Email address</label> 
-                <input type="text" class="form-control" placeholder="${user.email}" autocomplete=off>
+                <input type="text" class="form-control" readonly="true" placeholder="${user.email}" autocomplete=off>
                 <input name="userId" type="hidden" value="${user.userId }"/>
          		    <input name="email" type="hidden" value="${user.email }"/>
                                
@@ -53,7 +53,7 @@
             <br />
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="updateUserSubmit()">Sign Up</button>
+            <button type="button" class="btn btn-primary" onclick="updateUserSubmit()">update</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>

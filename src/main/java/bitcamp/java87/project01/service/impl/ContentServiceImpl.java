@@ -83,8 +83,8 @@ public class ContentServiceImpl implements ContentService {
   }
 
   @Override
-  public void deleteComment(Comment comment) throws Exception {
-    contentDao.deleteComment(comment);
+  public void deleteComment(int commentId) throws Exception {
+    contentDao.deleteComment(commentId);
   }
 
   @Override

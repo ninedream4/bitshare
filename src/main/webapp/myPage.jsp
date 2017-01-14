@@ -41,6 +41,8 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 
+<link rel="stylesheet" href="css/mainSection.css" type="text/css">
+
 </head>
 
 <body id="page-top" class="index">
@@ -66,11 +68,7 @@
 	<!-- Header -->
 	<jsp:include page="/module/header.jsp"/>
 	
-	<div></br></br>
-	<center>
-	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#mypage">내정보 수정</button>
-	</center>
-	</div>
+	
 	
 	
 	<!-- Portfolio Grid Section -->

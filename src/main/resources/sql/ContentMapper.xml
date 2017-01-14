@@ -92,7 +92,10 @@
 											ORDER BY REG_DATE ) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} -->
-					SELECT * FROM BRDS where TLE like '%${searchKeyword}%'
+					SELECT * FROM BRDS 
+					WHERE UPPER(TLE) LIKE UPPER('%${searchKeyword}%')
+					OR UPPER(CATE) like UPPER('%${searchKeyword}%')
+					
 	 </select>
 	 
 	 <select id="getMyContentList" parameterType="search" resultMap="contentSelectMap">
@@ -155,9 +158,9 @@
 	</delete>
 
 	<delete id="deleteComment" parameterType="comment">
-		DELETE BRD_TAG
+		DELETE CMTS
 		WHERE 
-		BRD_ID = #{value}
+		CMT_ID = #{value}
 	</delete>
 	
 	<!-- SQL : SELECT ROW Count -->	 
